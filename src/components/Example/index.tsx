@@ -1,4 +1,8 @@
+import { useEffect } from 'react';
+
 import * as S from './styles';
+
+import { fetchFromEndpoint } from '../../utils/getFromEndpoint';
 
 // const Another = styled.div`
 //   color: ${theme.color("primary", 5)};
@@ -6,6 +10,14 @@ import * as S from './styles';
 // `;
 
 const Example = (props) => {
+  useEffect(() => {
+    fetchFromEndpoint('http://test-frontend-uolpp.web.app/customers.json').then(
+      (res) => {
+        console.log('***res', res);
+      }
+    );
+  }, []);
+
   return (
     <>
       <S.ExampleDiv>this is Roboto</S.ExampleDiv>
