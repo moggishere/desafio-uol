@@ -37,3 +37,15 @@ export function getColorAction(
     : //    : 'red';
       getTheme(props).color.action.medium;
 }
+
+//TODO adicionar opcao para caso o usuario use um numero (transformar obj em array e pegar por index)
+export function getColorNeutral(
+  actionToken: object,
+  tokenKey: String,
+  props: ThemeProps
+) {
+  return actionToken['neutral'][`${tokenKey}`]
+    ? actionToken['neutral'][`${tokenKey}`]
+    : //    : 'red';
+      getTheme(props).color.action['medium-03'];
+}
