@@ -1,9 +1,9 @@
 import { styled } from 'styled-components';
 
-import theme from '../../styles/theme';
 import {
   getColorAction,
   getColorNeutral,
+  getColorAlert,
   getFontFamily,
   getWeight,
   getSize,
