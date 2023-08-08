@@ -6,26 +6,32 @@ import Document, {
   DocumentContext,
   DocumentInitialProps
 } from 'next/document';
-
-class MyDocument extends Document {
+import { ServerStyleSheet } from 'styled-components';
+export default class MyDocument extends Document {
   static async getInitialProps(
     ctx: DocumentContext
   ): Promise<DocumentInitialProps> {
+    const sheet = new ServerStyleSheet();
     const originalRenderPage = ctx.renderPage;
 
-    // Run the React rendering logic synchronously
-    ctx.renderPage = () =>
-      originalRenderPage({
-        // Useful for wrapping the whole react tree
-        enhanceApp: (App) => App,
-        // Useful for wrapping in a per-page basis
-        enhanceComponent: (Component) => Component
-      });
+    try {
+      // Run the React rendering logic synchronously
+      ctx.renderPage = () =>
+        originalRenderPage({
+          // Useful for wrapping the whole react tree
+          enhanceApp: (App) => (props) =>
+            sheet.collectStyles(<App {...props} />),
+          // Useful for wrapping in a per-page basis
+          enhanceComponent: (Component) => Component
+        });
 
-    // Run the parent `getInitialProps`, it now includes the custom `renderPage`
-    const initialProps = await Document.getInitialProps(ctx);
+      // Run the parent `getInitialProps`, it now includes the custom `renderPage`
+      const initialProps = await Document.getInitialProps(ctx);
 
-    return initialProps;
+      return initialProps;
+    } finally {
+      sheet.seal();
+    }
   }
 
   render() {
@@ -51,5 +57,3 @@ class MyDocument extends Document {
     );
   }
 }
-
-export default MyDocument;

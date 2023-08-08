@@ -1,28 +1,31 @@
-import { useEffect } from 'react';
-
 import * as S from './styles';
 
-import { fetchFromEndpoint } from '../../utils/getFromEndpoint';
-
-// const Another = styled.div`
-//   color: ${theme.color("primary", 5)};
-//   margin-top: ${theme.space(2)};
-// `;
-
-const Example = (props) => {
-  useEffect(() => {
-    fetchFromEndpoint('http://test-frontend-uolpp.web.app/customers.json').then(
-      (res) => {
-        console.log('***res', res);
-      }
-    );
-  }, []);
-
+const Example = () => {
   return (
     <>
-      <S.ExampleDiv>this is Roboto</S.ExampleDiv>
+      <S.ExampleDiv>Seja bem-vindo</S.ExampleDiv>
     </>
   );
 };
 
 export default Example;
+
+// export const getServerSideProps: GetServerSideProps = async () => {
+//   try {
+//     const endpointUrl = 'http://test-frontend-uolpp.web.app/customers.json'; // Replace with your endpoint URL
+//     const jsonData = await fetch(endpointUrl);
+
+//     console.log('***happens');
+
+//     return {
+//       props: {
+//         jsonData
+//       }
+//     };
+//   } catch (error) {
+//     console.error('Error in getServerSideProps:', error);
+//     return {
+//       props: {}
+//     };
+//   }
+// };

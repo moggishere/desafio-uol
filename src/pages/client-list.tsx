@@ -13,7 +13,7 @@ const CustomerList = ({ customers }) => {
   );
 };
 
-const About = ({ jsonData }) => {
+const ClientList = ({ jsonData }) => {
   return (
     <div>
       <h1>Customers Page</h1>
@@ -54,4 +54,4 @@ export async function getServerSideProps() {
   }
 }
 
-export default About;
+export default ClientList;

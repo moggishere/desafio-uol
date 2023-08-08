@@ -27,25 +27,45 @@ export function getSpace(index: SpaceIndex, props: ThemeProps) {
   return getTheme(props).space[index] + 'px';
 }
 
-export function getColorAction(
-  actionToken: object,
-  tokenKey: String,
-  props: ThemeProps
-) {
-  return actionToken['action'][`${tokenKey}`]
-    ? actionToken['action'][`${tokenKey}`]
-    : //    : 'red';
-      getTheme(props).color.action.medium;
+export function getColorAction(tokenKey: string | number, props: ThemeProps) {
+  if (typeof tokenKey === 'number') {
+    return Object.values(theme.color.action)[tokenKey]
+      ? Object.values(theme.color.action)[tokenKey]
+      : getTheme(props).color.action.medium;
+  }
+
+  return theme.color['action'][`${tokenKey}`]
+    ? theme.color['action'][`${tokenKey}`]
+    : getTheme(props).color.action.medium;
 }
 
-//TODO adicionar opcao para caso o usuario use um numero (transformar obj em array e pegar por index)
-export function getColorNeutral(
-  actionToken: object,
-  tokenKey: String,
-  props: ThemeProps
-) {
-  return actionToken['neutral'][`${tokenKey}`]
-    ? actionToken['neutral'][`${tokenKey}`]
+export function getColorNeutral(tokenKey: string | number, props: ThemeProps) {
+  if (typeof tokenKey === 'number') {
+    return Object.values(theme.color.neutral)[tokenKey]
+      ? Object.values(theme.color.neutral)[tokenKey]
+      : getTheme(props).color.action.medium;
+  }
+
+  return theme.color['neutral'][`${tokenKey}`]
+    ? theme.color['neutral'][`${tokenKey}`]
     : //    : 'red';
-      getTheme(props).color.action['medium-03'];
+      getTheme(props).color.neutral['medium-02'];
+}
+
+export function getFontFamily(tokenKey: string, props: ThemeProps) {
+  return theme.font['family'][`${tokenKey}`]
+    ? theme.font['family'][`${tokenKey}`]
+    : getTheme(props).font.family['default'];
+}
+
+export function getWeight(tokenKey: string | number, props: ThemeProps) {
+  if (typeof tokenKey === 'number') {
+    return Object.values(theme.font.weight)[tokenKey]
+      ? Object.values(theme.font.weight)[tokenKey]
+      : getTheme(props).font.weight.medium;
+  }
+
+  return theme.font['weight'][`${tokenKey}`]
+    ? theme.font['weight'][`${tokenKey}`]
+    : getTheme(props).font.weight['default'];
 }

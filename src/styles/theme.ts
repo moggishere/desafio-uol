@@ -35,7 +35,7 @@ const theme = {
       darkest: '#004266'
     },
     neutral: {
-      lightest: '#B9D7E8',
+      lightest: '#FFFFFF',
       light: '#ECECEC',
       'medium-04': '#CCCCCC',
       'medium-03': '#999999',
@@ -57,11 +57,14 @@ const theme = {
   },
   font: {
     family: {
-      default: 'Roboto',
-      light: 'Roboto light',
-      regular: 'Roboto regular',
-      medium: 'Roboto medium',
-      bold: 'Roboto bold'
+      default: 'Roboto'
+    },
+    weight: {
+      default: 400,
+      light: 300,
+      regular: 400,
+      medium: 500,
+      bold: 700
     },
     size: {
       //TODO devem ser adicionados os rem em concat depois

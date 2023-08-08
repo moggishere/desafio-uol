@@ -2,13 +2,13 @@
   "name": "desafio-uol",
   "browser": {
     "fs": false,
-    "os" : false,
+    "os": false,
     "path": false
   },
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "NODE_OPTIONS='--inspect' next dev",
     "build": "next build",
     "start": "next start",
     "lint": "next lint src --max-warnings=0",
