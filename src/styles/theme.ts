@@ -103,12 +103,28 @@ const theme = {
     huge: 200
   },
   'spacing-squish': {
-    //TODO devem ser adicionados os px em concat depois e notar que o padding dos lados esquerdo e direito sempre sao o dobro do valor, portanto padding: x 2*x
+    //TODO devem ser adicionados os px em concat depois e notar que o padding dos lados esquerdo e direito sempre sao o dobro do valor, portanto padding: ${x} ${x*2}
     nano: 4,
     micro: 8,
     sm: 12,
     md: 16,
     lg: 24
+  },
+  stroke: {
+    //TODO devem ser adicionados os px em concat depois
+    '100': 1,
+    '200': 2,
+    '300': 4,
+    '400': 6,
+    '500': 8
+  },
+  radius: {
+    //TODO devem ser adicionados os px em concat depois
+    '100': 1,
+    '200': 2,
+    '300': 4,
+    '400': 16,
+    pill: 8
   }
 };
 
