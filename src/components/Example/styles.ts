@@ -5,7 +5,13 @@ import {
   getColorAction,
   getColorNeutral,
   getFontFamily,
-  getWeight
+  getWeight,
+  getSize,
+  getLineHeight,
+  getSpacing,
+  getSquish,
+  getStroke,
+  getRadius
 } from '../../styles/getter';
 
 export const ExampleDiv = styled.div`
@@ -14,10 +20,17 @@ export const ExampleDiv = styled.div`
   height: 500px;
   font-family: ${(props) => getFontFamily('default', props)};
   font-weight: ${(props) => getWeight(1, props)};
-  font-size: 56px;
+  font-size: ${(props) => getSize('huge', props)};
+  line-height: ${(props) => getLineHeight(1, props)};
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  line-height: 1.5;
+  gap: ${(props) => getSpacing('xs', props)};
+`;
+
+export const ExampleButton = styled.button`
+  padding: ${(props) => getSquish(10, props)};
+  border: ${(props) => getStroke(3, props)};
+  border-radius: ${(props) => getRadius('pill', props)};
 `;

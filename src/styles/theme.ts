@@ -67,7 +67,6 @@ const theme = {
       bold: 700
     },
     size: {
-      //TODO devem ser adicionados os rem em concat depois
       nano: 0.75,
       micro: 0.875,
       base: 1,
@@ -84,14 +83,12 @@ const theme = {
     }
   },
   'line-height': {
-    //TODO deve ser convertido em string depois tbm
     tighest: 1,
     tight: 1.3,
-    medium: '1.',
+    medium: 1.5,
     loose: 1.7
   },
   spacing: {
-    //TODO devem ser adicionados os px em concat depois
     nano: 4,
     micro: 8,
     xxxs: 12,
@@ -106,7 +103,6 @@ const theme = {
     huge: 200
   },
   'spacing-squish': {
-    //TODO devem ser adicionados os px em concat depois e notar que o padding dos lados esquerdo e direito sempre sao o dobro do valor, portanto padding: ${x} ${x*2}
     nano: 4,
     micro: 8,
     sm: 12,
