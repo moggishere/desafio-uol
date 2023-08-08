@@ -1,6 +1,12 @@
-export async function fetchFromEndpoint(endpointUrl) {
+export async function fetchFromEndpoint(endpointUrl: URL) {
   try {
-    const response = await fetch(endpointUrl);
+    const response = await fetch(endpointUrl, {
+      method: 'GET',
+      mode: 'cors',
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    });
 
     if (!response.ok) {
       throw new Error(`Request failed with status: ${response.status}`);
