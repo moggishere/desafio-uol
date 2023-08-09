@@ -12,7 +12,7 @@ import {
   getSquish,
   getStroke,
   getRadius
-} from '../../styles/getter';
+} from '../../styles/getters';
 
 export const ExampleDiv = styled.div`
   background: ${(props) => getColorAction(4, props)};

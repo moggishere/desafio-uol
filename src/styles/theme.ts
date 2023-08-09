@@ -1,4 +1,5 @@
 const theme = {
+  //TODO remover colors e space
   colors: {
     primary: [
       'hsl(205, 79%, 97%)',
@@ -126,21 +127,117 @@ const theme = {
   }
 };
 
-// entire structure of our theme-object
+// estrutura do objeto theme
 export type Theme = typeof theme;
 
 // props that later will be injected by styled-components
 export type ThemeProps = { theme?: Theme };
-
-// 'primary' | 'secondary'
-export type ColorType = keyof Theme['colors'];
-
-export type ColorSubtype = keyof Theme['colors'];
 
 // 9 possible shades of a ColorType
 export type ColorIndex = 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9;
 
 // 12 possible spaces
 export type SpaceIndex = 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11;
+
+export type ColorAction = {
+  lightest: string;
+  light: string;
+  medium: string;
+  dark: string;
+  darkest: string;
+};
+
+export type ColorNeutral = {
+  transparent: string;
+  lightest: string;
+  light: string;
+  'medium-04': string;
+  'medium-03': string;
+  'medium-02': string;
+  'medium-01': string;
+  dark: string;
+  darkest: string;
+};
+
+export type ColorAlert = {
+  info: string;
+  success: string;
+  attention: string;
+  error: string;
+  'info-dark-theme': string;
+  'success-dark-theme': string;
+  'attention-dark-theme': string;
+  'error-dark-theme': string;
+};
+
+export type FontWeight = {
+  default: number;
+  light: number;
+  regular: number;
+  medium: number;
+  bold: number;
+};
+
+export type FontSize = {
+  nano: number;
+  micro: number;
+  base: number;
+  xxs: number;
+  xs: number;
+  sm: number;
+  md: number;
+  lg: number;
+  xl: number;
+  xxl: number;
+  xxxl: number;
+  giant: number;
+  huge: number;
+};
+
+export type LineHeight = {
+  tightest: number;
+  tight: number;
+  medium: number;
+  loose: number;
+};
+
+export type Spacing = {
+  nano: number;
+  micro: number;
+  xxxs: number;
+  xxs: number;
+  xs: number;
+  sm: number;
+  md: number;
+  lg: number;
+  xl: number;
+  xxl: number;
+  giant: number;
+  huge: number;
+};
+
+export type SpacingSquish = {
+  nano: number;
+  micro: number;
+  sm: number;
+  md: number;
+  lg: number;
+};
+
+export type Stroke = {
+  '100': number;
+  '200': number;
+  '300': number;
+  '400': number;
+  '500': number;
+};
+
+export type Radius = {
+  '100': number;
+  '200': number;
+  '300': number;
+  '400': number;
+  pill: number;
+};
 
 export default theme;

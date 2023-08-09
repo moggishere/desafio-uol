@@ -9,7 +9,7 @@ import {
   getSquish,
   getStroke,
   getRadius
-} from '../../styles/getter';
+} from '../../styles/getters';
 
 interface Props {
   buttonType: string;
