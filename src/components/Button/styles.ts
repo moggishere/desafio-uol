@@ -101,14 +101,17 @@ export const ButtonBody = styled.button<Props>`
   }
 
   &:disabled {
+    color: ${(props) => getColorNeutral('lightest', props)};
     background-color: ${(props) => getColorAction('lightest', props)};
+    border: ${(props) =>
+      `${getStroke('100', props)} ${getColorNeutral('transparent', props)}`};
     cursor: not-allowed;
 
-    &:hover {
+    /* &:hover {
       color: ${(props) => {
-        if (props.buttonType === 'secondary')
-          return getColorAction('medium', props);
-      }};
-    }
+      if (props.buttonType === 'secondary')
+        return getColorAction('medium', props);
+    }};
+    } */
   }
 `;
