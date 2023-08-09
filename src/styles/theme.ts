@@ -69,19 +69,19 @@ const theme = {
       bold: 700
     },
     size: {
-      nano: 0.75,
-      micro: 0.875,
-      base: 1,
-      xxs: 1.125,
-      xs: 1.25,
-      sm: 1.5,
-      md: 2,
-      lg: 2.5,
-      xl: 3,
-      xxl: 3.5,
-      xxxl: 4.5,
-      giant: 5.5,
-      huge: 6.5
+      nano: 12,
+      micro: 14,
+      base: 16,
+      xxs: 18,
+      xs: 20,
+      sm: 24,
+      md: 32,
+      lg: 40,
+      xl: 48,
+      xxl: 56,
+      xxxl: 72,
+      giant: 88,
+      huge: 104
     }
   },
   'line-height': {

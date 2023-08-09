@@ -85,12 +85,12 @@ export function getSize(tokenKey: keyof FontSize | number, props: any) {
 
   if (typeof tokenKey === 'number') {
     return (
-      Object.values(fontSize)[tokenKey] + 'rem' ||
-      getTheme(props).font.size.base + 'rem'
+      Object.values(fontSize)[tokenKey] + 'px' ||
+      getTheme(props).font.size.base + 'px'
     );
   }
 
-  return fontSize[tokenKey] + 'rem' || getTheme(props).font.size.base + 'rem';
+  return fontSize[tokenKey] + 'px' || getTheme(props).font.size.base + 'px';
 }
 
 export function getLineHeight(tokenKey: keyof LineHeight | number, props: any) {

@@ -13,7 +13,7 @@ export const Default = Template.bind({});
 Default.args = {
   setUserSearchQuery: (value) => console.log('User search query:', value),
   //   userSearchQuery: '',
-  queryStatus: 'default',
+  queryStatus: 'info',
   label: 'Label do campo',
   disabled: false
 };
@@ -21,8 +21,31 @@ Default.args = {
 export const Disabled = Template.bind({});
 Disabled.args = {
   setUserSearchQuery: (value) => console.log('User search query:', value),
-  //   userSearchQuery: '',
-  queryStatus: 'default',
+  queryStatus: 'info',
   label: 'campo desabilitado',
   disabled: true
+};
+
+export const Success = Template.bind({});
+Success.args = {
+  setUserSearchQuery: (value) => console.log('User search query:', value),
+  queryStatus: 'success',
+  label: 'input success',
+  disabled: false
+};
+
+export const Attention = Template.bind({});
+Attention.args = {
+  setUserSearchQuery: (value) => console.log('User search query:', value),
+  queryStatus: 'attention',
+  label: 'input attention',
+  disabled: false
+};
+
+export const Error = Template.bind({});
+Error.args = {
+  setUserSearchQuery: (value) => console.log('User search query:', value),
+  queryStatus: 'error',
+  label: 'input error',
+  disabled: false
 };

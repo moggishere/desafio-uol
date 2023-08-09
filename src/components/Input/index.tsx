@@ -5,7 +5,7 @@ import * as S from './styles';
 export type InputProps = {
   setUserSearchQuery?: Dispatch<SetStateAction<any>>;
   //   userSearchQuery: string;
-  queryStatus?: string;
+  queryStatus?: 'info' | 'success' | 'alert' | 'error';
   label?: string;
   disabled?: boolean;
 };
@@ -40,13 +40,14 @@ const Input = ({
     <S.InputContainer
       isActive={isFocused || inputValue.length > 0}
       queryStatus={queryStatus}
+      disabled={disabled}
     >
       <S.Label
         className="label"
         htmlFor="finput"
         isActive={isFocused || inputValue.length > 0}
       >
-        <S.Text>{label ? label : 'Label do input'}</S.Text>
+        <S.Text disabled={disabled}>{label ? label : 'Label do input'}</S.Text>
       </S.Label>
       <S.InputElement
         type="text"

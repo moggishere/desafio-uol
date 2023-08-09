@@ -17,10 +17,15 @@ import {
 interface InputProps {
   isActive: boolean;
   queryStatus: string;
+  disabled: boolean;
 }
 
 interface LabelProps {
   isActive: boolean;
+}
+
+interface TextProps {
+  disabled: boolean;
 }
 
 export const InputContainer = styled.div<InputProps>`
@@ -34,7 +39,11 @@ export const InputContainer = styled.div<InputProps>`
   justify-content: flex-end;
 
   border: ${(props) => {
-    if (props.queryStatus === 'default')
+    if (
+      props.queryStatus === 'default' ||
+      props.queryStatus === 'info' ||
+      props.disabled
+    )
       return `${getStroke('100', props)} ${getColorNeutral(
         'medium-04',
         props
@@ -54,9 +63,6 @@ export const InputContainer = styled.div<InputProps>`
     `${getSpacing('xxs', props)}px ${getSpacing('xxxs', props)}px`};
   font-family: ${(props) => getFontFamily('default', props)};
   font-size: ${(props) => getSize('xs', props)};
-  font-weight: ${(props) => getWeight('regular', props)};
-  color: ${(props) => getColorNeutral('dark', props)};
-  line-height: ${(props) => getLineHeight('medium', props)};
   background: ${(props) => getColorNeutral('lightest', props)};
 
   ${(props) =>
@@ -77,6 +83,9 @@ export const InputElement = styled.input<InputProps>`
   font-family: ${(props) => getFontFamily('default', props)};
   font-size: 16px;
   padding: 0;
+  color: ${(props) => getColorNeutral('dark', props)};
+  line-height: ${(props) => getLineHeight('medium', props)};
+  font-weight: ${(props) => getWeight('regular', props)};
 
   &:focus {
     outline: none;
@@ -102,21 +111,24 @@ export const Label = styled.label<LabelProps>`
   line-height: ${(props) => getLineHeight('medium', props)};
 
   ${(props) =>
-    props.isActive
-      ? css`
-          top: -24px;
-          font-size: ${(props) => getSize('nano', props)};
-        `
-      : css`
-          background: transparent;
-        `};
+    props.isActive &&
+    css`
+      top: -24px;
+      font-size: ${(props) => getSize('nano', props)};
+    `};
 `;
 
-export const Text = styled.div`
+export const Text = styled.div<TextProps>`
   transition: all 0.15s ease-out;
-  color: grey;
+  color: ${(props) => getColorNeutral('medium-02', props)};
 
   &::first-letter {
     text-transform: capitalize;
   }
+
+  ${(props) =>
+    props.disabled &&
+    css`
+      color: ${(props) => getColorNeutral('medium-04', props)};
+    `};
 `;
