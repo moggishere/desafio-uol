@@ -16,7 +16,7 @@ import theme from './theme';
 
 // função utilitária para servir backup de backup por meio de parâmetro backup
 function getTheme(props: ThemeProps) {
-  return props.theme && props.theme.colors ? props.theme : defaultTheme;
+  return props.theme && props.theme.color ? props.theme : defaultTheme;
 }
 
 export function getColorAction(
