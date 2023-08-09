@@ -35,6 +35,7 @@ const theme = {
       darkest: '#004266'
     },
     neutral: {
+      transparent: 'transparent',
       lightest: '#FFFFFF',
       light: '#ECECEC',
       'medium-04': '#CCCCCC',
@@ -110,7 +111,6 @@ const theme = {
     lg: 24
   },
   stroke: {
-    //TODO devem ser adicionados os px em concat depois
     '100': 1,
     '200': 2,
     '300': 4,
@@ -118,7 +118,6 @@ const theme = {
     '500': 8
   },
   radius: {
-    //TODO devem ser adicionados os px em concat depois
     '100': 1,
     '200': 2,
     '300': 4,
