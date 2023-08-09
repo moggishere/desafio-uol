@@ -1,12 +1,12 @@
 import React from 'react';
 import * as S from './styles';
 
-type ButtonProps = {
+export type ButtonProps = {
   children?: React.ReactNode;
   buttonType?: 'primary' | 'secondary';
   size?: 'small' | 'medium' | 'large';
   disabled?: boolean;
-  handleClick?: Function;
+  handleClick?: (e: any) => void;
 };
 
 const Button: React.FC<ButtonProps> = ({
@@ -22,7 +22,7 @@ const Button: React.FC<ButtonProps> = ({
 
   return (
     <S.ButtonBody
-      onClick={(e) => handleClick(e)}
+      onClick={(e) => handleClick && handleClick(e)}
       disabled={disabled}
       buttonType={buttonType}
       buttonSize={size}

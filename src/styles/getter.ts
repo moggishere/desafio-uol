@@ -27,144 +27,238 @@ export function getSpace(index: SpaceIndex, props: any) {
   return getTheme(props).space[index] + 'px';
 }
 
-export function getColorAction(tokenKey: string | number, props: any) {
-  if (typeof tokenKey === 'number') {
-    return Object.values(theme.color.action)[tokenKey]
-      ? Object.values(theme.color.action)[tokenKey]
-      : getTheme(props).color.action.medium;
-  }
+type ColorAction = {
+  lightest: string;
+  light: string;
+  medium: string;
+  dark: string;
+  darkest: string;
+};
 
-  return theme.color['action'][`${tokenKey}`]
-    ? theme.color['action'][`${tokenKey}`]
-    : getTheme(props).color.action.medium;
+export function getColorAction(
+  tokenKey: keyof ColorAction | number,
+  props: any
+) {
+  const colorAction = theme.color.action;
+  if (typeof tokenKey === 'number') {
+    return (
+      Object.values(colorAction)[tokenKey] ||
+      getTheme(props).color.action.medium
+    );
+  }
+  return colorAction[tokenKey] || getTheme(props).color.action.medium;
 }
 
-export function getColorNeutral(tokenKey: string | number, props: any) {
+type ColorNeutral = {
+  transparent: string;
+  lightest: string;
+  light: string;
+  'medium-04': string;
+  'medium-03': string;
+  'medium-02': string;
+  'medium-01': string;
+  dark: string;
+  darkest: string;
+};
+
+export function getColorNeutral(
+  tokenKey: keyof ColorNeutral | number,
+  props: any
+) {
+  const colorNeutral = theme.color.neutral;
+
   if (typeof tokenKey === 'number') {
-    return Object.values(theme.color.neutral)[tokenKey]
-      ? Object.values(theme.color.neutral)[tokenKey]
-      : getTheme(props).color.neutral['medium-02'];
+    return (
+      Object.values(colorNeutral)[tokenKey] ||
+      getTheme(props).color.neutral['medium-02']
+    );
   }
 
-  return theme.color['neutral'][`${tokenKey}`]
-    ? theme.color['neutral'][`${tokenKey}`]
-    : getTheme(props).color.neutral['medium-02'];
+  return colorNeutral[tokenKey] || getTheme(props).color.neutral['medium-02'];
 }
 
-export function getColorAlert(tokenKey: string | number, props: any) {
+type ColorAlert = {
+  info: string;
+  success: string;
+  attention: string;
+  error: string;
+  'info-dark-theme': string;
+  'success-dark-theme': string;
+  'attention-dark-theme': string;
+  'error-dark-theme': string;
+};
+
+export function getColorAlert(tokenKey: keyof ColorAlert | number, props: any) {
+  const colorAlert = theme.color.alert;
+
   if (typeof tokenKey === 'number') {
-    return Object.values(theme.color.alert)[tokenKey]
-      ? Object.values(theme.color.alert)[tokenKey]
-      : getTheme(props).color.alert.info;
+    return (
+      Object.values(colorAlert)[tokenKey] || getTheme(props).color.alert.info
+    );
   }
 
-  return theme.color['alert'][`${tokenKey}`]
-    ? theme.color['alert'][`${tokenKey}`]
-    : getTheme(props).color.alert.info;
+  return colorAlert[tokenKey] || getTheme(props).color.alert.info;
 }
 
-export function getFontFamily(tokenKey: string, props: any) {
-  return theme.font['family'][`${tokenKey}`]
-    ? theme.font['family'][`${tokenKey}`]
-    : getTheme(props).font.family['default'];
+export function getFontFamily(
+  tokenKey: keyof typeof theme.font.family,
+  props: any
+) {
+  const fontFamily = theme.font.family;
+
+  return fontFamily[tokenKey] || getTheme(props).font.family.default;
 }
 
-export function getWeight(tokenKey: string | number, props: any) {
+type FontWeight = {
+  default: number;
+  light: number;
+  regular: number;
+  medium: number;
+  bold: number;
+};
+
+export function getWeight(tokenKey: keyof FontWeight | number, props: any) {
+  const fontWeight = theme.font.weight;
+
   if (typeof tokenKey === 'number') {
-    return Object.values(theme.font.weight)[tokenKey]
-      ? Object.values(theme.font.weight)[tokenKey]
-      : getTheme(props).font.weight['default'];
+    return Object.values(fontWeight)[tokenKey] || fontWeight.default;
   }
 
-  return theme.font['weight'][`${tokenKey}`]
-    ? theme.font['weight'][`${tokenKey}`]
-    : getTheme(props).font.weight['default'];
+  return fontWeight[tokenKey] || getTheme(props).font.weight.default;
 }
 
-export function getSize(tokenKey: string | number, props: any) {
+type FontSize = {
+  nano: number;
+  micro: number;
+  base: number;
+  xxs: number;
+  xs: number;
+  sm: number;
+  md: number;
+  lg: number;
+  xl: number;
+  xxl: number;
+  xxxl: number;
+  giant: number;
+  huge: number;
+};
+
+export function getSize(tokenKey: keyof FontSize | number, props: any) {
+  const fontSize = theme.font.size;
+
   if (typeof tokenKey === 'number') {
-    return Object.values(theme.font.size)[tokenKey] + 'rem'
-      ? Object.values(theme.font.size)[tokenKey] + 'rem'
-      : getTheme(props).font.size['base'] + 'rem';
+    return (
+      Object.values(fontSize)[tokenKey] + 'rem' ||
+      getTheme(props).font.size.base + 'rem'
+    );
   }
 
-  return theme.font['size'][`${tokenKey}`]
-    ? theme.font['size'][`${tokenKey}`] + 'rem'
-    : getTheme(props).font.size['base'] + 'rem';
+  return fontSize[tokenKey] + 'rem' || getTheme(props).font.size.base + 'rem';
 }
 
-export function getLineHeight(tokenKey: string | number, props: any) {
+type LineHeight = {
+  tightest: number;
+  tight: number;
+  medium: number;
+  loose: number;
+};
+
+export function getLineHeight(tokenKey: keyof LineHeight | number, props: any) {
+  const lineHeight = theme['line-height'];
+
   if (typeof tokenKey === 'number') {
-    return Object.values(theme['line-height'])[tokenKey]
-      ? Object.values(theme['line-height'])[tokenKey]
-      : getTheme(props)['line-height'][1];
+    return (
+      Object.values(lineHeight)[tokenKey] ||
+      getTheme(props)['line-height'].medium
+    );
   }
 
-  return theme['line-height'][`${tokenKey}`]
-    ? theme['line-height'][`${tokenKey}`]
-    : getTheme(props)['line-height']['medium'];
+  return lineHeight[tokenKey] || getTheme(props)['line-height'].medium;
 }
 
-export function getSpacing(tokenKey: string | number, props: any) {
+type Spacing = {
+  nano: number;
+  micro: number;
+  xxxs: number;
+  xxs: number;
+  xs: number;
+  sm: number;
+  md: number;
+  lg: number;
+  xl: number;
+  xxl: number;
+  giant: number;
+  huge: number;
+};
+
+export function getSpacing(tokenKey: keyof Spacing | number, props: any) {
+  const spacing = theme.spacing;
+
   if (typeof tokenKey === 'number') {
-    return Object.values(theme.spacing)[tokenKey] + 'px'
-      ? Object.values(theme.spacing)[tokenKey] + 'px'
-      : getTheme(props).spacing['md'] + 'px';
+    return (
+      Object.values(spacing)[tokenKey] || getTheme(props).spacing['md'] + 'px'
+    );
   }
 
-  return theme.spacing[`${tokenKey}`]
-    ? theme.spacing[`${tokenKey}`] + 'px'
-    : getTheme(props).spacing['md'] + 'px';
+  return spacing[tokenKey] || getTheme(props).spacing['md'] + 'px';
 }
 
-export function getSquish(tokenKey: string | number, props: any) {
+type SpacingSquish = {
+  nano: number;
+  micro: number;
+  sm: number;
+  md: number;
+  lg: number;
+};
+
+export function getSquish(tokenKey: keyof SpacingSquish | number, props: any) {
+  const spacingSquish = theme['spacing-squish'];
+
   if (typeof tokenKey === 'number') {
-    return Object.values(theme['spacing-squish'])[tokenKey]
-      ? Object.values(theme['spacing-squish'])[tokenKey] +
-          'px' +
-          ' ' +
-          Object.values(theme['spacing-squish'])[tokenKey] * 2 +
-          'px'
-      : getTheme(props)['spacing-squish']['md'] +
-          'px' +
-          ' ' +
-          getTheme(props)['spacing-squish']['md'] * 2 +
-          'px';
+    const value = Object.values(spacingSquish)[tokenKey] || spacingSquish['md'];
+    return `${value}px ${value * 2}px`;
   }
 
-  return theme['spacing-squish'][`${tokenKey}`]
-    ? theme['spacing-squish'][`${tokenKey}`] +
-        'px' +
-        ' ' +
-        theme['spacing-squish'][`${tokenKey}`] * 2 +
-        'px'
-    : getTheme(props)['spacing-squish']['md'] +
-        'px' +
-        ' ' +
-        getTheme(props)['spacing-squish']['md'] * 2 +
-        'px';
+  const value = spacingSquish[tokenKey] || spacingSquish['md'];
+  return `${value}px ${value * 2}px`;
 }
 
-export function getStroke(tokenKey: string | number, props: any) {
+type Stroke = {
+  '100': number;
+  '200': number;
+  '300': number;
+  '400': number;
+  '500': number;
+};
+
+export function getStroke(tokenKey: keyof Stroke | number, props: any) {
+  const stroke = theme.stroke;
+
   if (typeof tokenKey === 'number') {
-    return Object.values(theme.stroke)[tokenKey]
-      ? Object.values(theme.stroke)[tokenKey] + 'px solid'
-      : getTheme(props).stroke['200'] + 'px solid';
+    const value = Object.values(stroke)[tokenKey] || stroke['200'];
+    return `${value}px solid`;
   }
 
-  return theme.stroke[`${tokenKey}`]
-    ? theme.stroke[`${tokenKey}`] + 'px solid'
-    : getTheme(props).stroke['200'] + 'px solid';
+  const value = stroke[tokenKey] || stroke['200'];
+  return `${value}px solid`;
 }
 
-export function getRadius(tokenKey: string | number, props: any) {
+type Radius = {
+  '100': number;
+  '200': number;
+  '300': number;
+  '400': number;
+  pill: number;
+};
+
+export function getRadius(tokenKey: keyof Radius | number, props: any) {
+  const radius = theme.radius;
+
   if (typeof tokenKey === 'number') {
-    return Object.values(theme.radius)[tokenKey]
-      ? Object.values(theme.radius)[tokenKey] + 'px'
-      : getTheme(props).radius['200'] + 'px';
+    const value = Object.values(radius)[tokenKey] || radius['200'];
+    return `${value}px`;
   }
 
-  return theme.radius[`${tokenKey}`]
-    ? theme.radius[`${tokenKey}`] + 'px'
-    : getTheme(props).radius['200'] + 'px';
+  const value = radius[tokenKey] || radius['200'];
+  return `${value}px`;
 }

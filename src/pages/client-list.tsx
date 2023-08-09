@@ -1,6 +1,18 @@
 import React from 'react';
 
-const CustomerList = ({ customers }) => {
+interface Customer {
+  id: string;
+  name: string;
+  email: string;
+  phone: string;
+  status: string;
+}
+
+interface CustomerListProps {
+  customers: Customer[];
+}
+
+const CustomerList: React.FC<CustomerListProps> = ({ customers }) => {
   return (
     <div>
       <h1>Customer List</h1>
@@ -13,7 +25,7 @@ const CustomerList = ({ customers }) => {
   );
 };
 
-const ClientList = ({ jsonData }) => {
+const ClientList = ({ jsonData }: { jsonData: any }) => {
   return (
     <div>
       <h1>Customers Page</h1>

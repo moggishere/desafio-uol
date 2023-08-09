@@ -1,5 +1,5 @@
-import { Meta, Story } from '@storybook/react';
-import Button from '../components/Button/Button';
+import { Meta, StoryFn } from '@storybook/react';
+import Button, { ButtonProps } from '../components/Button/Button';
 
 export default {
   title: 'Component/Button',
@@ -7,14 +7,7 @@ export default {
   argTypes: { handleClick: { action: 'handleClick' } }
 } as Meta;
 
-const Template = (
-  args: JSX.IntrinsicAttributes & {
-    children?: 'ReactNode';
-    buttonType?: 'primary' | 'secondary';
-    size?: 'small' | 'medium' | 'large';
-    disabled?: boolean;
-  }
-) => <Button {...args} />;
+const Template: StoryFn<ButtonProps> = (args) => <Button {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {

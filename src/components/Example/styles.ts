@@ -19,7 +19,7 @@ export const ExampleDiv = styled.div`
   width: 400px;
   height: 500px;
   font-family: ${(props) => getFontFamily('default', props)};
-  font-weight: ${(props) => getWeight(1, props)};
+  font-weight: ${(props) => getWeight(`default`, props)};
   font-size: ${(props) => getSize('huge', props)};
   line-height: ${(props) => getLineHeight(1, props)};
   display: flex;

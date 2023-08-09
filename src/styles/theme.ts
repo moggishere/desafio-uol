@@ -84,7 +84,7 @@ const theme = {
     }
   },
   'line-height': {
-    tighest: 1,
+    tightest: 1,
     tight: 1.3,
     medium: 1.5,
     loose: 1.7
