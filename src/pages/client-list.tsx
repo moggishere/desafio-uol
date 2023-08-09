@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 
+import Input from '../components/Input';
 interface Customer {
   id: string;
   name: string;
@@ -26,8 +27,12 @@ const CustomerList: React.FC<CustomerListProps> = ({ customers }) => {
 };
 
 const ClientList = ({ jsonData }: { jsonData: any }) => {
+  const [userSearchQuery, setUserSearchQuery] = useState('');
+
   return (
     <div>
+      <Input label={'label'} setUserSearchQuery={setUserSearchQuery} />
+      <h1>{userSearchQuery}</h1>
       <h1>Customers Page</h1>
       {jsonData ? (
         <>

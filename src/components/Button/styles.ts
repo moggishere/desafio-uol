@@ -8,7 +8,8 @@ import {
   getLineHeight,
   getSquish,
   getStroke,
-  getRadius
+  getRadius,
+  getFontFamily
 } from '../../styles/getters';
 
 interface Props {
@@ -63,6 +64,7 @@ export const ButtonBody = styled.button<Props>`
   }};
 
   border-radius: ${(props) => getRadius('300', props)};
+  font-family: ${(props) => getFontFamily('default', props)};
   font-weight: ${(props) => getWeight('regular', props)};
   line-height: ${(props) => getLineHeight('tightest', props)};
   outline: none;

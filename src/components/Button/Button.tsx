@@ -26,6 +26,8 @@ const Button: React.FC<ButtonProps> = ({
       disabled={disabled}
       buttonType={buttonType}
       buttonSize={size}
+      name="button"
+      aria-label="user-button"
     >
       {children ? children : 'No label found'}
     </S.ButtonBody>

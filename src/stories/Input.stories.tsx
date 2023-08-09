@@ -11,8 +11,18 @@ const Template: StoryFn<InputProps> = (args) => <Input {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {
-  //   setUserSearchQuery?: (e: any) => void;
-  //   userSearchQuery?: (e: any) => void;
+  setUserSearchQuery: (value) => console.log('User search query:', value),
+  //   userSearchQuery: '',
   queryStatus: 'default',
-  label: 'Label placeholder'
+  label: 'Label do campo',
+  disabled: false
+};
+
+export const Disabled = Template.bind({});
+Disabled.args = {
+  setUserSearchQuery: (value) => console.log('User search query:', value),
+  //   userSearchQuery: '',
+  queryStatus: 'default',
+  label: 'campo desabilitado',
+  disabled: true
 };
