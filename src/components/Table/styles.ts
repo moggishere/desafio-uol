@@ -70,6 +70,10 @@ export const TableCell = styled.td`
 
   &:first-child {
     padding-left: ${(props) => getSpacing('micro', props)};
+
+    @media screen and (max-width: 800px) {
+      padding-left: 0;
+    }
   }
 `;
 
@@ -88,9 +92,7 @@ export const TableWrapper = styled.div`
   font-family: ${(props) => getFontFamily('default', props)};
   width: fit-content;
 
-  @media screen and (max-width: 600px) {
-    border: 0;
-
+  @media screen and (max-width: 800px) {
     ${Caption} {
       font-size: 1.3em;
     }
@@ -113,7 +115,7 @@ export const TableWrapper = styled.div`
     }
 
     ${TableCell} {
-      border-bottom: 1px solid #ddd;
+      border-bottom: 0;
       display: block;
       font-size: 0.8em;
       text-align: left;
