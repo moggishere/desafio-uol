@@ -15,7 +15,7 @@ import {
 } from '../../styles/getters';
 
 export const Table = styled.table`
-  border: 1px solid #ccc;
+  border: 1px solid transparent;
   border-collapse: collapse;
   border-spacing: ${(props) => getSpacing('micro', props)};
   margin: 0;
@@ -33,25 +33,44 @@ export const Caption = styled.caption`
 export const TableRow = styled.tr`
   background-color: ${(props) => getColorNeutral('lightest', props)};
   /* border: 1px solid #ddd; */
-  padding: 0.35em;
+  /* padding: 0.35em; */
 `;
 
 export const TableHeader = styled.th`
-  padding-top: ${(props) => getSpacing('xs', props)};
   padding-bottom: ${(props) => getSpacing('micro', props)};
   /* padding: 0.625em; */
   text-align: left;
   font-size: 0.85em;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  border-bottom: ${(props) => getStroke('100', props)};
+  color: ${(props) => getColorNeutral('medium-02', props)};
+  border-bottom: ${(props) =>
+    getStroke('100', props) + ' ' + getColorNeutral('medium-01', props)};
+
+  padding-right: ${(props) => getSpacing('micro', props)};
+
+  &:first-child {
+    padding-left: ${(props) => getSpacing('micro', props)};
+  }
 `;
 
 export const TableCell = styled.td`
   padding: 0;
   /* padding: 0.625em; */
   text-align: left;
-  font-size: 0.8em;
+  min-width: 8.4rem;
+
+  font-size: ${(props) => getSize('base', props)};
+  color: ${(props) => getColorNeutral('medium-01', props)};
+  border-bottom: ${(props) =>
+    getStroke('100', props) + ' ' + getColorNeutral('medium-04', props)};
+  padding-right: ${(props) => getSpacing('micro', props)};
+  padding-top: ${(props) => getSpacing('xxs', props)};
+  padding-bottom: ${(props) => getSpacing('xxxs', props)};
+
+  &:first-child {
+    padding-left: ${(props) => getSpacing('micro', props)};
+  }
 `;
 
 export const TableWrapper = styled.div`
@@ -67,6 +86,7 @@ export const TableWrapper = styled.div`
     getSpacing('xs', props)};
   border-radius: ${(props) => getRadius('300', props)};
   font-family: ${(props) => getFontFamily('default', props)};
+  width: fit-content;
 
   @media screen and (max-width: 600px) {
     border: 0;
