@@ -26,7 +26,7 @@ export const Table = styled.table`
 `;
 
 export const Caption = styled.caption`
-  font-size: 1.5em;
+  font-size: ${(props) => getSize('sm', props)};
   margin: 0.5em 0 0.75em;
 `;
 
@@ -38,9 +38,8 @@ export const TableRow = styled.tr`
 
 export const TableHeader = styled.th`
   padding-bottom: ${(props) => getSpacing('micro', props)};
-  /* padding: 0.625em; */
   text-align: left;
-  font-size: 0.85em;
+  font-size: ${(props) => getSize('base', props)};
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: ${(props) => getColorNeutral('medium-02', props)};
@@ -70,10 +69,6 @@ export const TableCell = styled.td`
 
   &:first-child {
     padding-left: ${(props) => getSpacing('micro', props)};
-
-    @media screen and (max-width: 800px) {
-      padding-left: 0;
-    }
   }
 `;
 
@@ -81,20 +76,29 @@ export const TableWrapper = styled.div`
   border: ${(props) =>
     getStroke('100', props) + getColorNeutral('medium-02', props)};
   padding: ${(props) =>
-    getSpacing('xs', props) +
+    getSpacing('xs', props) + //top
     ' ' +
-    getSpacing('xs', props) +
+    getSpacing('xs', props) + //right
     ' ' +
-    getSpacing('xxs', props) +
+    getSpacing('xxs', props) + //bottom
     ' ' +
-    getSpacing('xs', props)};
+    getSpacing('xs', props)}; //left
   border-radius: ${(props) => getRadius('300', props)};
   font-family: ${(props) => getFontFamily('default', props)};
   width: fit-content;
 
   @media screen and (max-width: 800px) {
+    padding: ${(props) =>
+      0 + //top
+      ' ' +
+      getSpacing('xs', props) + //right
+      ' ' +
+      getSpacing('xs', props) + //bottom
+      ' ' +
+      getSpacing('xs', props)}; //left
+
     ${Caption} {
-      font-size: 1.3em;
+      font-size: ${(props) => getSize('xs', props)};
     }
 
     thead {
@@ -109,23 +113,39 @@ export const TableWrapper = styled.div`
     }
 
     ${TableRow} {
-      border-bottom: 3px solid #ddd;
-      display: block;
-      margin-bottom: 0.625em;
+      border-bottom: ${(props) =>
+        getStroke('100', props) + ' ' + getColorNeutral('medium-04', props)};
+      display: flex;
+      flex-direction: column;
+      gap: ${(props) => getSpacing('xxs', props)};
+      /* margin: ${(props) => getSpacing('xs', props) + ' 0'}; */
+      /* margin-bottom: 0.625em; */
     }
 
     ${TableCell} {
       border-bottom: 0;
-      display: block;
-      font-size: 0.8em;
+      display: flex;
+      flex-direction: column;
+      gap: ${(props) => getSpacing('nano', props)};
       text-align: left;
+      padding: ${(props) => '0 ' + getSpacing('nano', props)};
     }
 
     ${TableCell}::before {
       content: attr(data-label);
       float: left;
-      font-weight: bold;
       text-transform: uppercase;
+      color: ${(props) => getColorNeutral('medium-02', props)};
+    }
+
+    ${TableCell}:first-child {
+      margin-top: ${(props) => getSpacing('xs', props)};
+    }
+
+    ${TableCell}:last-child {
+      margin-bottom: ${(props) => getSpacing('xs', props)};
+      border-bottom: ${(props) =>
+        getStroke('100', props) + ' ' + getColorNeutral('medium-04', props)};
     }
 
     ${TableCell}:last-child {

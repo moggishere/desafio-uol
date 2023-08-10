@@ -11,7 +11,7 @@ const Cells: React.FC<CellsProps> = ({ customerData, columns = ['none'] }) => {
   return (
     <>
       {columns.map((column: string, index: any) => (
-        <S.TableCell key={`table-cell-${index}`}>
+        <S.TableCell key={`table-cell-${index}`} data-label={column}>
           {customerData ? customerData[column] : ''}
         </S.TableCell>
       ))}
