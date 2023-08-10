@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 
 import Input from '../components/Input';
+import Table from '../components/Table/Table';
 interface Customer {
   id: string;
   name: string;
@@ -29,11 +30,12 @@ const CustomerList: React.FC<CustomerListProps> = ({ customers }) => {
 const ClientList = ({ jsonData }: { jsonData: any }) => {
   const [userSearchQuery, setUserSearchQuery] = useState('');
 
+  const tableColumns = ['id', 'name', 'email', 'phone', 'status'];
+
   return (
-    <div>
+    <>
       <Input label={'label'} setUserSearchQuery={setUserSearchQuery} />
-      <h1>{userSearchQuery}</h1>
-      <h1>Customers Page</h1>
+
       {jsonData ? (
         <>
           <CustomerList customers={jsonData.customers} />
@@ -41,7 +43,19 @@ const ClientList = ({ jsonData }: { jsonData: any }) => {
       ) : (
         <></>
       )}
-    </div>
+
+      {jsonData ? (
+        <>
+          <Table
+            query={userSearchQuery}
+            columns={tableColumns}
+            customers={jsonData.customers}
+          />
+        </>
+      ) : (
+        <></>
+      )}
+    </>
   );
 };
 

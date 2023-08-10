@@ -14,9 +14,9 @@ import {
   getSpacing
 } from '../../styles/getters';
 
-interface InputProps {
+interface InputContainerProps {
   isActive: boolean;
-  queryStatus: string;
+  queryStatus: 'default' | 'info' | 'success' | 'attention' | 'error';
   disabled: boolean;
 }
 
@@ -28,7 +28,7 @@ interface TextProps {
   disabled: boolean;
 }
 
-export const InputContainer = styled.div<InputProps>`
+export const InputContainer = styled.div<InputContainerProps>`
   position: relative;
   width: 280px;
   height: 50px;
@@ -69,13 +69,13 @@ export const InputContainer = styled.div<InputProps>`
     props.isActive &&
     css`
       outline: none;
-      border: 2px solid blue;
+      /* border: 2px solid blue; */
       padding: ${(props) =>
         `${getSpacing('nano', props)}px ${getSpacing('xxs', props)}px`};
     `};
 `;
 
-export const InputElement = styled.input<InputProps>`
+export const InputElement = styled.input`
   width: 100%;
   border: none;
   border-radius: ${(props) => getRadius('100', props)};
@@ -104,7 +104,7 @@ export const Label = styled.label<LabelProps>`
   display: flex;
   align-items: center;
   pointer-events: none;
-  transition: 0.1s ease-out;
+  transition: 0.1s cubic-bezier(0.5, 0.5, 0, 1);
   transform-origin: left top;
   background: transparent;
   font-size: ${(props) => getSize('xs', props)};
@@ -119,7 +119,8 @@ export const Label = styled.label<LabelProps>`
 `;
 
 export const Text = styled.div<TextProps>`
-  transition: all 0.15s ease-out;
+  transition: 0.1s cubic-bezier(0.5, 0.5, 0, 1);
+  transform-origin: left top;
   color: ${(props) => getColorNeutral('medium-02', props)};
 
   &::first-letter {

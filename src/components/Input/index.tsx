@@ -5,18 +5,18 @@ import * as S from './styles';
 export type InputProps = {
   setUserSearchQuery?: Dispatch<SetStateAction<any>>;
   //   userSearchQuery: string;
-  queryStatus?: 'info' | 'success' | 'alert' | 'error';
+  queryStatus?: 'default' | 'info' | 'success' | 'attention' | 'error';
   label?: string;
   disabled?: boolean;
 };
 
-const Input = ({
+const Input: React.FC<InputProps> = ({
   //   userSearchQuery,
   setUserSearchQuery,
-  queryStatus,
+  queryStatus = 'default',
   label,
   disabled = false
-}: InputProps) => {
+}) => {
   const [inputValue, setInputValue] = useState('');
   const [isFocused, setIsFocused] = useState(false);
 
@@ -57,10 +57,8 @@ const Input = ({
           handleInputChange(e);
         }}
         aria-labelledby="label-finput"
-        queryStatus={queryStatus}
         onFocus={handleFocus}
         onBlur={handleBlur}
-        isActive={isFocused || inputValue.length > 0}
         disabled={disabled}
       />
     </S.InputContainer>
