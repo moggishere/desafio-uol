@@ -40,6 +40,7 @@ export const TableHeader = styled.th`
   padding-bottom: ${(props) => getSpacing('micro', props)};
   text-align: left;
   font-size: ${(props) => getSize('base', props)};
+  font-weight: ${(props) => getWeight('bold', props)};
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: ${(props) => getColorNeutral('medium-02', props)};
@@ -136,6 +137,8 @@ export const TableWrapper = styled.div`
       float: left;
       text-transform: uppercase;
       color: ${(props) => getColorNeutral('medium-02', props)};
+      letter-spacing: 0.1em;
+      font-weight: ${(props) => getWeight('bold', props)};
     }
 
     ${TableCell}:first-child {
