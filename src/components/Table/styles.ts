@@ -17,8 +17,9 @@ import {
 export const Table = styled.table`
   border: 1px solid #ccc;
   border-collapse: collapse;
+  border-spacing: ${(props) => getSpacing('micro', props)};
   margin: 0;
-  padding: ${(props) => getSpacing('xs', props)}px;
+  padding: ${(props) => getSpacing('xs', props)};
   /* width: 100%; */
   max-width: 1024px;
   table-layout: fixed;
@@ -31,13 +32,15 @@ export const Caption = styled.caption`
 
 export const TableRow = styled.tr`
   background-color: ${(props) => getColorNeutral('lightest', props)};
-  border: 1px solid #ddd;
+  /* border: 1px solid #ddd; */
   padding: 0.35em;
 `;
 
 export const TableHeader = styled.th`
-  padding: 0.625em;
-  text-align: center;
+  padding-top: ${(props) => getSpacing('xs', props)};
+  padding-bottom: ${(props) => getSpacing('micro', props)};
+  /* padding: 0.625em; */
+  text-align: left;
   font-size: 0.85em;
   letter-spacing: 0.1em;
   text-transform: uppercase;
@@ -45,12 +48,26 @@ export const TableHeader = styled.th`
 `;
 
 export const TableCell = styled.td`
-  padding: 0.625em;
-  text-align: center;
+  padding: 0;
+  /* padding: 0.625em; */
+  text-align: left;
   font-size: 0.8em;
 `;
 
 export const TableWrapper = styled.div`
+  border: ${(props) =>
+    getStroke('100', props) + getColorNeutral('medium-02', props)};
+  padding: ${(props) =>
+    getSpacing('xs', props) +
+    ' ' +
+    getSpacing('xs', props) +
+    ' ' +
+    getSpacing('xxs', props) +
+    ' ' +
+    getSpacing('xs', props)};
+  border-radius: ${(props) => getRadius('300', props)};
+  font-family: ${(props) => getFontFamily('default', props)};
+
   @media screen and (max-width: 600px) {
     border: 0;
 
@@ -79,7 +96,7 @@ export const TableWrapper = styled.div`
       border-bottom: 1px solid #ddd;
       display: block;
       font-size: 0.8em;
-      text-align: right;
+      text-align: left;
     }
 
     ${TableCell}::before {
