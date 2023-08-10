@@ -111,11 +111,12 @@ export function getSpacing(tokenKey: keyof Spacing | number, props: any) {
 
   if (typeof tokenKey === 'number') {
     return (
-      Object.values(spacing)[tokenKey] || getTheme(props).spacing['md'] + 'px'
+      Object.values(spacing)[tokenKey] + 'px' ||
+      getTheme(props).spacing['md'] + 'px'
     );
   }
 
-  return spacing[tokenKey] || getTheme(props).spacing['md'] + 'px';
+  return spacing[tokenKey] + 'px' || getTheme(props).spacing['md'] + 'px';
 }
 
 export function getSquish(tokenKey: keyof SpacingSquish | number, props: any) {

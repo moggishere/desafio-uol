@@ -60,18 +60,26 @@ export const InputContainer = styled.div<InputContainerProps>`
   border-radius: ${(props) => getRadius('200', props)};
   box-sizing: border-box;
   padding: ${(props) =>
-    `${getSpacing('xxs', props)}px ${getSpacing('xxxs', props)}px`};
+    `${getSpacing('xxs', props)} ${getSpacing('xxxs', props)}`};
   font-family: ${(props) => getFontFamily('default', props)};
   font-size: ${(props) => getSize('xs', props)};
   background: ${(props) => getColorNeutral('lightest', props)};
 
   ${(props) =>
     props.isActive &&
+    props.queryStatus !== 'success' &&
+    props.queryStatus !== 'attention' &&
+    props.queryStatus !== 'error' &&
+    css`
+      border-color: ${(props) => getColorAction('medium', props)};
+    `};
+
+  ${(props) =>
+    props.isActive &&
     css`
       outline: none;
-      /* border: 2px solid blue; */
       padding: ${(props) =>
-        `${getSpacing('nano', props)}px ${getSpacing('xxs', props)}px`};
+        `${getSpacing('nano', props)} ${getSpacing('xxs', props)}`};
     `};
 `;
 
@@ -100,7 +108,7 @@ export const Label = styled.label<LabelProps>`
   position: absolute;
   top: 0;
   bottom: 0;
-  left: ${(props) => `${getSpacing('xxs', props)}px`};
+  left: ${(props) => `${getSpacing('xxs', props)}`};
   display: flex;
   align-items: center;
   pointer-events: none;

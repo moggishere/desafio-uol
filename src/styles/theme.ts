@@ -130,14 +130,8 @@ const theme = {
 // estrutura do objeto theme
 export type Theme = typeof theme;
 
-// props that later will be injected by styled-components
+// props que vão ser inseridas pelo styled-components
 export type ThemeProps = { theme?: Theme };
-
-// 9 possible shades of a ColorType
-export type ColorIndex = 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9;
-
-// 12 possible spaces
-export type SpaceIndex = 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11;
 
 export type ColorAction = {
   lightest: string;

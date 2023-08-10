@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 
+import * as S from '../styles/pagesStyles';
+
 import Input from '../components/Input';
 import Table from '../components/Table/Table';
 interface Customer {
@@ -10,52 +12,34 @@ interface Customer {
   status: string;
 }
 
-interface CustomerListProps {
-  customers: Customer[];
-}
-
-const CustomerList: React.FC<CustomerListProps> = ({ customers }) => {
-  return (
-    <div>
-      <h1>Customer List</h1>
-      <ul>
-        {customers.map((customer, index) => (
-          <li key={index}>{customer.name}</li>
-        ))}
-      </ul>
-    </div>
-  );
-};
-
 const ClientList = ({ jsonData }: { jsonData: any }) => {
   const [userSearchQuery, setUserSearchQuery] = useState('');
+  const [queryType, setQueryType] = useState('email');
 
   const tableColumns = ['id', 'name', 'email', 'phone', 'status'];
 
   return (
-    <>
-      <Input label={'label'} setUserSearchQuery={setUserSearchQuery} />
+    <S.PageContainer>
+      <S.ClientListContainer>
+        <Input
+          label={'filtrar clientes'}
+          setUserSearchQuery={setUserSearchQuery}
+        />
 
-      {jsonData ? (
-        <>
-          <CustomerList customers={jsonData.customers} />
-        </>
-      ) : (
-        <></>
-      )}
-
-      {jsonData ? (
-        <>
-          <Table
-            query={userSearchQuery}
-            columns={tableColumns}
-            customers={jsonData.customers}
-          />
-        </>
-      ) : (
-        <></>
-      )}
-    </>
+        {jsonData ? (
+          <>
+            <Table
+              query={userSearchQuery}
+              queryType={queryType}
+              columns={tableColumns}
+              customers={jsonData.customers}
+            />
+          </>
+        ) : (
+          <></>
+        )}
+      </S.ClientListContainer>
+    </S.PageContainer>
   );
 };
 

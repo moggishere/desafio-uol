@@ -1,11 +1,26 @@
 import styled, { css } from 'styled-components';
 
+import {
+  getColorAction,
+  getColorNeutral,
+  getColorAlert,
+  getFontFamily,
+  getWeight,
+  getSize,
+  getLineHeight,
+  getSpacing,
+  getSquish,
+  getStroke,
+  getRadius
+} from '../../styles/getters';
+
 export const Table = styled.table`
   border: 1px solid #ccc;
   border-collapse: collapse;
   margin: 0;
-  padding: 0;
-  width: 100%;
+  padding: ${(props) => getSpacing('xs', props)}px;
+  /* width: 100%; */
+  max-width: 1024px;
   table-layout: fixed;
 `;
 
@@ -15,7 +30,7 @@ export const Caption = styled.caption`
 `;
 
 export const TableRow = styled.tr`
-  background-color: #f8f8f8;
+  background-color: ${(props) => getColorNeutral('lightest', props)};
   border: 1px solid #ddd;
   padding: 0.35em;
 `;
@@ -26,6 +41,7 @@ export const TableHeader = styled.th`
   font-size: 0.85em;
   letter-spacing: 0.1em;
   text-transform: uppercase;
+  border-bottom: ${(props) => getStroke('100', props)};
 `;
 
 export const TableCell = styled.td`

@@ -1,4 +1,6 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+
+import { filterObjectsBySubstring } from '../../utils/helpers';
 
 import * as S from './styles';
 
@@ -14,6 +16,7 @@ interface Customer {
 
 export type TableProps = {
   query?: string;
+  queryType?: string;
   columns?: Array<string>;
   customers?: Customer[];
   caption?: string;
@@ -21,10 +24,18 @@ export type TableProps = {
 
 const Table: React.FC<TableProps> = ({
   query = '',
+  queryType = 'email',
   columns = ['No columns'],
   customers = [],
   caption = ''
 }) => {
+  const [queryResult, setQueryResult] = useState([...customers]);
+  useEffect(() => {
+    let filteredArr = filterObjectsBySubstring(customers, queryType, query);
+    setQueryResult(filteredArr);
+    return;
+  }, [query]);
+
   return (
     <S.TableWrapper>
       <S.Table>
@@ -39,7 +50,7 @@ const Table: React.FC<TableProps> = ({
           </S.TableRow>
         </thead>
         <tbody>
-          {customers.map((individualCustomerData, index) => (
+          {queryResult.map((individualCustomerData, index) => (
             <S.TableRow data-label={`row-${index}`}>
               <Cells customerData={individualCustomerData} columns={columns} />
             </S.TableRow>
