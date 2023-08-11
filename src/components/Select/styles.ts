@@ -131,7 +131,7 @@ export const Text = styled.div<TextProps>`
     `};
 `;
 
-export const DownArrowContainer = styled.span`
+export const DownArrowContainer = styled.span<DownArrowProps>`
   position: absolute;
   right: ${(props) => getSpacing('xxxs', props)};
   bottom: ${(props) => getSpacing('micro', props)};

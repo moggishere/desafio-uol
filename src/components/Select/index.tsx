@@ -65,7 +65,7 @@ const Select: React.FC<SelectProps> = ({
 
   const handleSelectOption = (value: string) => {
     setIsSelecting(true);
-    setQueryType(value);
+    setQueryType && setQueryType(value);
     setIsSelecting(false);
   };
 
@@ -78,12 +78,12 @@ const Select: React.FC<SelectProps> = ({
       disabled={disabled}
       onClick={() => handleClick()}
       ref={wrapperRef}
-      isActive={isFocused || queryType.length ? true : false}
+      isActive={isFocused || queryType?.length ? true : false}
     >
       <S.Label
         className="label"
         htmlFor="finput"
-        isActive={isFocused || queryType.length ? true : false}
+        isActive={isFocused || queryType?.length ? true : false}
       >
         <S.Text disabled={disabled}>{label ? label : 'Label do select'}</S.Text>
       </S.Label>
@@ -93,7 +93,7 @@ const Select: React.FC<SelectProps> = ({
         onFocus={handleFocus}
         // onBlur={handleBlur}
       >
-        {queryType ? queryType : ''}
+        {queryType ?? ''}
         <S.DownArrowContainer isActive={isFocused}>{'▼'}</S.DownArrowContainer>
       </S.SelectElement>
       <S.SelectOptions isActive={isFocused}>
