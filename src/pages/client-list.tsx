@@ -1,5 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 
+import * as S from '../styles/pagesStyles';
+
+import Input from '../components/Input';
+import Table from '../components/Table/Table';
+import Select from '../components/Select';
 interface Customer {
   id: string;
   name: string;
@@ -8,35 +13,41 @@ interface Customer {
   status: string;
 }
 
-interface CustomerListProps {
-  customers: Customer[];
-}
-
-const CustomerList: React.FC<CustomerListProps> = ({ customers }) => {
-  return (
-    <div>
-      <h1>Customer List</h1>
-      <ul>
-        {customers.map((customer, index) => (
-          <li key={index}>{customer.name}</li>
-        ))}
-      </ul>
-    </div>
-  );
-};
-
 const ClientList = ({ jsonData }: { jsonData: any }) => {
+  const tableColumns = ['id', 'name', 'email', 'phone', 'status'];
+  const [userSearchQuery, setUserSearchQuery] = useState('');
+  const [queryType, setQueryType] = useState(tableColumns[2]);
+
   return (
-    <div>
-      <h1>Customers Page</h1>
-      {jsonData ? (
-        <>
-          <CustomerList customers={jsonData.customers} />
-        </>
-      ) : (
-        <></>
-      )}
-    </div>
+    <S.PageContainer>
+      <S.ClientListContainer>
+        <S.InputFieldsContainer>
+          <Input
+            label={'filtrar clientes'}
+            setUserSearchQuery={setUserSearchQuery}
+          />
+          <Select
+            queryType={queryType}
+            label={'campo de filtro'}
+            setQueryType={setQueryType}
+            options={tableColumns}
+          />
+        </S.InputFieldsContainer>
+
+        {jsonData ? (
+          <>
+            <Table
+              query={userSearchQuery}
+              queryType={queryType}
+              columns={tableColumns}
+              customers={jsonData.customers}
+            />
+          </>
+        ) : (
+          <></>
+        )}
+      </S.ClientListContainer>
+    </S.PageContainer>
   );
 };
 

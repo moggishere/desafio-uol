@@ -1,7 +1,64 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 
-const Table = ({}) => {
-  return null;
+import { filterObjectsBySubstring } from '../../utils/helpers';
+
+import * as S from './styles';
+
+import Cells from './Cells';
+
+interface Customer {
+  id: string;
+  name: string;
+  email: string;
+  phone: string;
+  status: string;
+}
+
+export type TableProps = {
+  query?: string;
+  queryType?: string;
+  columns?: Array<string>;
+  customers?: Customer[];
+  caption?: string;
+};
+
+const Table: React.FC<TableProps> = ({
+  query = '',
+  queryType = 'email',
+  columns = ['No columns'],
+  customers = [],
+  caption = ''
+}) => {
+  const [queryResult, setQueryResult] = useState([...customers]);
+  useEffect(() => {
+    let filteredArr = filterObjectsBySubstring(customers, queryType, query);
+    setQueryResult(filteredArr);
+    return;
+  }, [query, queryType]);
+
+  return (
+    <S.TableWrapper>
+      <S.Table>
+        {caption ? <S.Caption>{caption ? caption : ''}</S.Caption> : <></>}
+        <thead>
+          <S.TableRow>
+            {columns.map((header, index) => (
+              <S.TableHeader key={`header-${header}-${index}`}>
+                {header ? header : 'Header'}
+              </S.TableHeader>
+            ))}
+          </S.TableRow>
+        </thead>
+        <tbody>
+          {queryResult.map((individualCustomerData, index) => (
+            <S.TableRow data-label={`row-${index}`}>
+              <Cells customerData={individualCustomerData} columns={columns} />
+            </S.TableRow>
+          ))}
+        </tbody>
+      </S.Table>
+    </S.TableWrapper>
+  );
 };
 
 export default Table;

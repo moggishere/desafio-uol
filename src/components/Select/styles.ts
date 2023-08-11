@@ -13,10 +13,10 @@ import {
   getFontFamily,
   getSpacing
 } from '../../styles/getters';
+import { url } from 'inspector';
 
-interface InputContainerProps {
+interface SelectContainerProps {
   isActive: boolean;
-  queryStatus: 'default' | 'info' | 'success' | 'attention' | 'error';
   disabled: boolean;
 }
 
@@ -28,34 +28,26 @@ interface TextProps {
   disabled: boolean;
 }
 
-export const InputContainer = styled.div<InputContainerProps>`
+interface SelectOptionsProps {
+  isActive: boolean;
+}
+
+interface DownArrowProps {
+  isActive: boolean;
+}
+
+export const SelectContainer = styled.div<SelectContainerProps>`
   position: relative;
   width: 280px;
   height: 50px;
   min-height: 50px;
   display: flex;
   flex-direction: column;
-  align-items: flex-end;
+  align-items: center;
   justify-content: flex-end;
 
-  border: ${(props) => {
-    if (
-      props.queryStatus === 'default' ||
-      props.queryStatus === 'info' ||
-      props.disabled
-    )
-      return `${getStroke('100', props)} ${getColorNeutral(
-        'medium-04',
-        props
-      )}`;
-    if (props.queryStatus === 'success')
-      return `${getStroke('100', props)} ${getColorAlert('success', props)}`;
-    if (props.queryStatus === 'attention')
-      return `${getStroke('100', props)} ${getColorAlert('attention', props)}`;
-    if (props.queryStatus === 'error')
-      return `${getStroke('100', props)} ${getColorAlert('error', props)}`;
-    return `${getStroke('100', props)} ${getColorNeutral('medium-04', props)}`; // border default
-  }};
+  border: ${(props) =>
+    getStroke('100', props) + ' ' + getColorNeutral('medium-04', props)};
 
   border-radius: ${(props) => getRadius('200', props)};
   box-sizing: border-box;
@@ -64,15 +56,7 @@ export const InputContainer = styled.div<InputContainerProps>`
   font-family: ${(props) => getFontFamily('default', props)};
   font-size: ${(props) => getSize('xs', props)};
   background: ${(props) => getColorNeutral('lightest', props)};
-
-  ${(props) =>
-    props.isActive &&
-    props.queryStatus !== 'success' &&
-    props.queryStatus !== 'attention' &&
-    props.queryStatus !== 'error' &&
-    css`
-      border-color: ${(props) => getColorAction('medium', props)};
-    `};
+  cursor: pointer;
 
   ${(props) =>
     props.isActive &&
@@ -83,7 +67,9 @@ export const InputContainer = styled.div<InputContainerProps>`
     `};
 `;
 
-export const InputElement = styled.input`
+export const SelectElement = styled.div.attrs((props) => ({
+  tabIndex: 0
+}))`
   width: 100%;
   border: none;
   border-radius: ${(props) => getRadius('100', props)};
@@ -94,6 +80,9 @@ export const InputElement = styled.input`
   color: ${(props) => getColorNeutral('dark', props)};
   line-height: ${(props) => getLineHeight('medium', props)};
   font-weight: ${(props) => getWeight('regular', props)};
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
 
   &:focus {
     outline: none;
@@ -140,4 +129,52 @@ export const Text = styled.div<TextProps>`
     css`
       color: ${(props) => getColorNeutral('medium-04', props)};
     `};
+`;
+
+export const DownArrowContainer = styled.span<DownArrowProps>`
+  position: absolute;
+  right: ${(props) => getSpacing('xxxs', props)};
+  bottom: ${(props) => getSpacing('micro', props)};
+  transition: 0.2s ease-in-out;
+
+  ${(props) =>
+    props.isActive &&
+    css`
+      transform: rotate(180deg);
+    `};
+`;
+
+export const SelectOptions = styled.div<SelectOptionsProps>`
+  position: absolute;
+  width: 100%;
+  min-height: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  background-color: ${(props) => getColorNeutral('lightest', props)};
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+  border-radius: ${(props) => getRadius('200', props)};
+  overflow: hidden;
+  top: 50px;
+  visibility: hidden;
+
+  ${(props) =>
+    props.isActive &&
+    css`
+      visibility: visible;
+    `};
+`;
+
+export const Option = styled.span`
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  background-color: ${(props) => getColorNeutral('lightest', props)};
+  padding: ${(props) => getSpacing('nano', props)};
+
+  &:hover {
+    background-color: ${(props) => getColorNeutral('medium-04', props)};
+  }
 `;

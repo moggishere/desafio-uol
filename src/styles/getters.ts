@@ -16,7 +16,7 @@ import theme from './theme';
 
 // função utilitária para servir backup de backup por meio de parâmetro backup
 function getTheme(props: ThemeProps) {
-  return props.theme && props.theme.colors ? props.theme : defaultTheme;
+  return props.theme && props.theme.color ? props.theme : defaultTheme;
 }
 
 export function getColorAction(
@@ -67,7 +67,10 @@ export function getFontFamily(
 ) {
   const fontFamily = theme.font.family;
 
-  return fontFamily[tokenKey] || getTheme(props).font.family.default;
+  return (
+    fontFamily[tokenKey] + ', sans-serif' ||
+    getTheme(props).font.family.default + ', sans-serif'
+  );
 }
 
 export function getWeight(tokenKey: keyof FontWeight | number, props: any) {
@@ -85,12 +88,12 @@ export function getSize(tokenKey: keyof FontSize | number, props: any) {
 
   if (typeof tokenKey === 'number') {
     return (
-      Object.values(fontSize)[tokenKey] + 'rem' ||
-      getTheme(props).font.size.base + 'rem'
+      Object.values(fontSize)[tokenKey] + 'px' ||
+      getTheme(props).font.size.base + 'px'
     );
   }
 
-  return fontSize[tokenKey] + 'rem' || getTheme(props).font.size.base + 'rem';
+  return fontSize[tokenKey] + 'px' || getTheme(props).font.size.base + 'px';
 }
 
 export function getLineHeight(tokenKey: keyof LineHeight | number, props: any) {
@@ -111,11 +114,12 @@ export function getSpacing(tokenKey: keyof Spacing | number, props: any) {
 
   if (typeof tokenKey === 'number') {
     return (
-      Object.values(spacing)[tokenKey] || getTheme(props).spacing['md'] + 'px'
+      Object.values(spacing)[tokenKey] + 'px' ||
+      getTheme(props).spacing['md'] + 'px'
     );
   }
 
-  return spacing[tokenKey] || getTheme(props).spacing['md'] + 'px';
+  return spacing[tokenKey] + 'px' || getTheme(props).spacing['md'] + 'px';
 }
 
 export function getSquish(tokenKey: keyof SpacingSquish | number, props: any) {

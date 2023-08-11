@@ -1,32 +1,4 @@
 const theme = {
-  //TODO remover colors e space
-  colors: {
-    primary: [
-      'hsl(205, 79%, 97%)',
-      'hsl(205, 97%, 85%)',
-      'hsl(205 ,84%, 74%)',
-      'hsl(205 ,74%, 65%)',
-      'hsl(205, 65%, 55%)',
-      'hsl(205, 67%, 45%)',
-      'hsl(205, 76%, 39%)',
-      'hsl(205, 82%, 33%)',
-      'hsl(205, 87%, 29%)',
-      'hsl(205, 100%, 21%)'
-    ],
-    secondary: [
-      'hsl(171, 82%, 96%)',
-      'hsl(172, 97%, 88%)',
-      'hsl(174, 96%, 78%)',
-      'hsl(176, 87%, 67%)',
-      'hsl(178, 78%, 57%)',
-      'hsl(180, 77%, 47%)',
-      'hsl(182, 85%, 39%)',
-      'hsl(184, 90%, 34%)',
-      'hsl(186, 91%, 29%)',
-      'hsl(188, 91%, 23%)'
-    ]
-  },
-  space: [4, 8, 12, 16, 24, 32, 48, 64, 96, 128, 192, 256],
   color: {
     action: {
       lightest: '#B9D7E8',
@@ -69,19 +41,19 @@ const theme = {
       bold: 700
     },
     size: {
-      nano: 0.75,
-      micro: 0.875,
-      base: 1,
-      xxs: 1.125,
-      xs: 1.25,
-      sm: 1.5,
-      md: 2,
-      lg: 2.5,
-      xl: 3,
-      xxl: 3.5,
-      xxxl: 4.5,
-      giant: 5.5,
-      huge: 6.5
+      nano: 12,
+      micro: 14,
+      base: 16,
+      xxs: 18,
+      xs: 20,
+      sm: 24,
+      md: 32,
+      lg: 40,
+      xl: 48,
+      xxl: 56,
+      xxxl: 72,
+      giant: 88,
+      huge: 104
     }
   },
   'line-height': {
@@ -130,14 +102,8 @@ const theme = {
 // estrutura do objeto theme
 export type Theme = typeof theme;
 
-// props that later will be injected by styled-components
+// props que vão ser inseridas pelo styled-components
 export type ThemeProps = { theme?: Theme };
-
-// 9 possible shades of a ColorType
-export type ColorIndex = 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9;
-
-// 12 possible spaces
-export type SpaceIndex = 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11;
 
 export type ColorAction = {
   lightest: string;
