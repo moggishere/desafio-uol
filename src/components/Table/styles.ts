@@ -72,6 +72,9 @@ export const TableCell = styled.td`
   padding-right: ${(props) => getSpacing('micro', props)};
   padding-top: ${(props) => getSpacing('xxs', props)};
   padding-bottom: ${(props) => getSpacing('xxxs', props)};
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 
   &:first-child {
     padding-left: ${(props) => getSpacing('micro', props)};
@@ -141,6 +144,7 @@ export const TableWrapper = styled.div<TableWrapperProps>`
       gap: ${(props) => getSpacing('nano', props)};
       text-align: left;
       padding: ${(props) => '0 ' + getSpacing('nano', props)};
+      max-width: 15rem;
     }
 
     ${TableCell}::before {
