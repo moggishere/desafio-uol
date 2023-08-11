@@ -183,6 +183,10 @@ export const TableWrapper = styled.div<TableWrapperProps>`
           getSpacing('xxxs', props) + //bottom
           ' ' +
           getSpacing('xs', props)}; //left
+
+        @media screen and (max-width: 800px) {
+          padding: ${(props) => getSpacing('xxs', props)};
+        }
       }
     `};
 `;
