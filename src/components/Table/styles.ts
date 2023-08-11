@@ -88,6 +88,7 @@ export const TableWrapper = styled.div`
   border-radius: ${(props) => getRadius('300', props)};
   font-family: ${(props) => getFontFamily('default', props)};
   width: fit-content;
+  background-color: ${(props) => getColorNeutral('lightest', props)};
 
   @media screen and (max-width: 800px) {
     padding: ${(props) =>

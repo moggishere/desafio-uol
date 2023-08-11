@@ -17,3 +17,9 @@ Default.args = {
   columns: ['id', 'name', 'email', 'phone', 'status'],
   customers: mockData.customers
 };
+
+export const Empty = Template.bind({});
+Empty.args = {
+  query: '',
+  columns: ['id', 'name', 'email', 'phone', 'status']
+};
