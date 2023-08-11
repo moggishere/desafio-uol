@@ -22,47 +22,49 @@ export type TableProps = {
   caption?: string;
 };
 
-const Table: React.FC<TableProps> = ({
-  query = '',
-  queryType = 'email',
-  columns = ['No columns'],
-  customers = [],
-  caption = ''
-}) => {
-  const [queryResult, setQueryResult] = useState([...customers]);
-  useEffect(() => {
-    let filteredArr = filterObjectsBySubstring(customers, queryType, query);
-    setQueryResult(filteredArr);
-    return;
-  }, [query, queryType]);
+const Table: React.FC<TableProps> = React.memo(
+  ({
+    query = '',
+    queryType = 'email',
+    columns = ['No columns'],
+    customers = [],
+    caption = ''
+  }) => {
+    const [queryResult, setQueryResult] = useState([...customers]);
+    useEffect(() => {
+      let filteredArr = filterObjectsBySubstring(customers, queryType, query);
+      setQueryResult(filteredArr);
+      return;
+    }, [query, queryType]);
 
-  return (
-    <S.TableWrapper>
-      <S.Table>
-        {caption ? <S.Caption>{caption ? caption : ''}</S.Caption> : <></>}
-        <thead>
-          <S.TableRow>
-            {columns.map((header, index) => (
-              <S.TableHeader key={`header-${header}-${index}`}>
-                {header ? header : 'Header'}
-              </S.TableHeader>
-            ))}
-          </S.TableRow>
-        </thead>
-        <tbody>
-          {queryResult.map((individualCustomerData, index) => (
-            <S.TableRow data-label={`row-${index}`} key={`row-${index}`}>
-              <Cells
-                customerData={individualCustomerData}
-                columns={columns}
-                key={`row-${index}`}
-              />
+    return (
+      <S.TableWrapper>
+        <S.Table>
+          {caption ? <S.Caption>{caption ? caption : ''}</S.Caption> : <></>}
+          <thead>
+            <S.TableRow>
+              {columns.map((header, index) => (
+                <S.TableHeader key={`header-${header}-${index}`}>
+                  {header ? header : 'Header'}
+                </S.TableHeader>
+              ))}
             </S.TableRow>
-          ))}
-        </tbody>
-      </S.Table>
-    </S.TableWrapper>
-  );
-};
+          </thead>
+          <tbody>
+            {queryResult.map((individualCustomerData, index) => (
+              <S.TableRow data-label={`row-${index}`} key={`row-${index}`}>
+                <Cells
+                  customerData={individualCustomerData}
+                  columns={columns}
+                  key={`row-${index}`}
+                />
+              </S.TableRow>
+            ))}
+          </tbody>
+        </S.Table>
+      </S.TableWrapper>
+    );
+  }
+);
 
 export default Table;
