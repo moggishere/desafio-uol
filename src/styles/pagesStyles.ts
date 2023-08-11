@@ -33,4 +33,8 @@ export const InputFieldsContainer = styled.div`
   align-items: center;
   justify-content: center;
   gap: ${(props) => getSpacing('md', props)};
+
+  @media screen and (max-width: 800px) {
+    flex-direction: column;
+  }
 `;

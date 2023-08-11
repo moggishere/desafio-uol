@@ -14,6 +14,10 @@ import {
   getRadius
 } from '../../styles/getters';
 
+interface TableWrapperProps {
+  arrIsEmpty: boolean;
+}
+
 export const Table = styled.table`
   border: 1px solid transparent;
   border-collapse: collapse;
@@ -74,7 +78,12 @@ export const TableCell = styled.td`
   }
 `;
 
-export const TableWrapper = styled.div`
+export const TableWrapper = styled.div<TableWrapperProps>`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
   border: ${(props) =>
     getStroke('100', props) + getColorNeutral('medium-02', props)};
   padding: ${(props) =>
@@ -157,4 +166,23 @@ export const TableWrapper = styled.div`
       border-bottom: 0;
     }
   }
+
+  ${(props) =>
+    props.arrIsEmpty &&
+    css`
+      &::after {
+        content: 'Nenhum usuário encontrado';
+        font-family: ${(props) => getFontFamily('default', props)};
+        font-size: ${(props) => getSize('base', props)};
+        color: ${(props) => getColorNeutral('medium-02', props)};
+        padding: ${(props) =>
+          getSpacing('xs', props) + //top
+          ' ' +
+          getSpacing('xs', props) + //right
+          ' ' +
+          getSpacing('xxxs', props) + //bottom
+          ' ' +
+          getSpacing('xs', props)}; //left
+      }
+    `};
 `;

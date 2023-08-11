@@ -38,7 +38,7 @@ const Table: React.FC<TableProps> = React.memo(
     }, [query, queryType]);
 
     return (
-      <S.TableWrapper>
+      <S.TableWrapper arrIsEmpty={!queryResult.length ? true : false}>
         <S.Table>
           {caption ? <S.Caption>{caption ? caption : ''}</S.Caption> : <></>}
           <thead>
