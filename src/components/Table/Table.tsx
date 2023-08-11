@@ -34,7 +34,7 @@ const Table: React.FC<TableProps> = ({
     let filteredArr = filterObjectsBySubstring(customers, queryType, query);
     setQueryResult(filteredArr);
     return;
-  }, [query]);
+  }, [query, queryType]);
 
   return (
     <S.TableWrapper>

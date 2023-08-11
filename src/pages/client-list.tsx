@@ -4,6 +4,7 @@ import * as S from '../styles/pagesStyles';
 
 import Input from '../components/Input';
 import Table from '../components/Table/Table';
+import Select from '../components/Select';
 interface Customer {
   id: string;
   name: string;
@@ -13,18 +14,25 @@ interface Customer {
 }
 
 const ClientList = ({ jsonData }: { jsonData: any }) => {
-  const [userSearchQuery, setUserSearchQuery] = useState('');
-  const [queryType, setQueryType] = useState('email');
-
   const tableColumns = ['id', 'name', 'email', 'phone', 'status'];
+  const [userSearchQuery, setUserSearchQuery] = useState('');
+  const [queryType, setQueryType] = useState(tableColumns[2]);
 
   return (
     <S.PageContainer>
       <S.ClientListContainer>
-        <Input
-          label={'filtrar clientes'}
-          setUserSearchQuery={setUserSearchQuery}
-        />
+        <S.InputFieldsContainer>
+          <Input
+            label={'filtrar clientes'}
+            setUserSearchQuery={setUserSearchQuery}
+          />
+          <Select
+            queryType={queryType}
+            label={'campo de filtro'}
+            setQueryType={setQueryType}
+            options={tableColumns}
+          />
+        </S.InputFieldsContainer>
 
         {jsonData ? (
           <>

@@ -67,7 +67,10 @@ export function getFontFamily(
 ) {
   const fontFamily = theme.font.family;
 
-  return fontFamily[tokenKey] || getTheme(props).font.family.default;
+  return (
+    fontFamily[tokenKey] + ', sans-serif' ||
+    getTheme(props).font.family.default + ', sans-serif'
+  );
 }
 
 export function getWeight(tokenKey: keyof FontWeight | number, props: any) {

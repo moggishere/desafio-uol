@@ -37,6 +37,7 @@ export const TableRow = styled.tr`
 `;
 
 export const TableHeader = styled.th`
+  min-width: 8.4rem;
   padding-bottom: ${(props) => getSpacing('micro', props)};
   text-align: left;
   font-size: ${(props) => getSize('base', props)};
