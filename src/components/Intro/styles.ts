@@ -15,7 +15,7 @@ import {
 } from '../../styles/getters';
 
 export const ExampleDiv = styled.div`
-  background: ${(props) => getColorAction(4, props)};
+  background: ${(props) => getColorNeutral('lightest', props)};
   width: 400px;
   height: 500px;
   font-family: ${(props) => getFontFamily('default', props)};
@@ -29,8 +29,9 @@ export const ExampleDiv = styled.div`
   gap: ${(props) => getSpacing('xs', props)};
 `;
 
-export const ExampleButton = styled.button`
-  padding: ${(props) => getSquish(10, props)};
-  border: ${(props) => getStroke(3, props)};
-  border-radius: ${(props) => getRadius('pill', props)};
+export const WelcomeMessage = styled.span`
+  font-family: ${(props) => getFontFamily('default', props)};
+  font-size: ${(props) => getSize('lg', props)};
+  font-weight: ${(props) => getWeight('bold', props)};
+  color: ${(props) => getColorNeutral('medium-01', props)};
 `;

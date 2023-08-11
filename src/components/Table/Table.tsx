@@ -51,8 +51,12 @@ const Table: React.FC<TableProps> = ({
         </thead>
         <tbody>
           {queryResult.map((individualCustomerData, index) => (
-            <S.TableRow data-label={`row-${index}`}>
-              <Cells customerData={individualCustomerData} columns={columns} />
+            <S.TableRow data-label={`row-${index}`} key={`row-${index}`}>
+              <Cells
+                customerData={individualCustomerData}
+                columns={columns}
+                key={`row-${index}`}
+              />
             </S.TableRow>
           ))}
         </tbody>

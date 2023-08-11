@@ -1,14 +1,18 @@
 import * as S from './styles';
 
-import Example from '../Example';
+import * as D from '../../styles/pagesStyles';
+
+import Intro from '../Intro';
 
 const Main = ({
   title = 'React Avançado',
   description = 'TypeScript, ReactJS, NextJS e Styled Components'
 }) => (
-  <S.Wrapper>
-    <Example />
-  </S.Wrapper>
+  <D.PageContainer>
+    <D.GreetingContainer>
+      <Intro />
+    </D.GreetingContainer>
+  </D.PageContainer>
 );
 
 export default Main;

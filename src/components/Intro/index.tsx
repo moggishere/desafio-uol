@@ -2,11 +2,11 @@ import * as S from './styles';
 
 import Button from '../Button/Button';
 
-const Example = () => {
+const Intro = () => {
   return (
     <>
       <S.ExampleDiv>
-        {'Seja bem-vindo'}
+        <S.WelcomeMessage>{'Seja bem-vindo'}</S.WelcomeMessage>
         <a href="/client-list">
           <Button>Carregar lista de clientes</Button>
         </a>
@@ -15,4 +15,4 @@ const Example = () => {
   );
 };
 
-export default Example;
+export default Intro;

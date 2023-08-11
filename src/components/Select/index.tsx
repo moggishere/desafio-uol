@@ -46,7 +46,7 @@ const Select: React.FC<SelectProps> = ({
   disabled = false,
   options = ['default option']
 }) => {
-  const [isFocused, setIsFocused] = useState(false);
+  const [isFocused, setIsFocused] = useState(true);
   const [isSelecting, setIsSelecting] = useState(false);
   const wrapperRef = useRef(null);
   useOutsideAlerter(wrapperRef, setIsFocused, isSelecting);
