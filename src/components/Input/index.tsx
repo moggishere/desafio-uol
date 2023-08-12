@@ -38,14 +38,14 @@ const Input: React.FC<InputProps> = ({
 
   return (
     <S.InputContainer
-      isActive={isFocused || inputValue.length > 0}
-      queryStatus={queryStatus}
+      $isActive={isFocused || inputValue.length > 0}
+      $queryStatus={queryStatus}
       disabled={disabled}
     >
       <S.Label
         className="label"
         htmlFor="finput"
-        isActive={isFocused || inputValue.length > 0}
+        $isActive={isFocused || inputValue.length > 0}
       >
         <S.Text disabled={disabled}>{label ? label : 'Label do input'}</S.Text>
       </S.Label>

@@ -24,8 +24,8 @@ const Button: React.FC<ButtonProps> = ({
       {...props}
       onClick={(e) => handleClick && handleClick(e)}
       disabled={disabled}
-      buttonType={buttonType}
-      buttonSize={size}
+      $buttonType={buttonType}
+      $buttonSize={size}
       name="button"
       aria-label="button"
       type={type}

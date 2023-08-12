@@ -1,13 +1,8 @@
-import * as S from './styles';
-
 import * as D from '../../styles/pagesStyles';
 
 import Intro from '../Intro';
 
-const Main = ({
-  title = 'React Avançado',
-  description = 'TypeScript, ReactJS, NextJS e Styled Components'
-}) => (
+const Main = () => (
   <D.PageContainer>
     <D.GreetingContainer>
       <Intro />

@@ -16,12 +16,12 @@ import {
 import { url } from 'inspector';
 
 interface SelectContainerProps {
-  isActive: boolean;
+  $isActive: boolean;
   disabled: boolean;
 }
 
 interface LabelProps {
-  isActive: boolean;
+  $isActive: boolean;
 }
 
 interface TextProps {
@@ -29,11 +29,11 @@ interface TextProps {
 }
 
 interface SelectOptionsProps {
-  isActive: boolean;
+  $isActive: boolean;
 }
 
 interface DownArrowProps {
-  isActive: boolean;
+  $isActive: boolean;
 }
 
 export const SelectContainer = styled.div<SelectContainerProps>`
@@ -59,7 +59,7 @@ export const SelectContainer = styled.div<SelectContainerProps>`
   cursor: pointer;
 
   ${(props) =>
-    props.isActive &&
+    props.$isActive &&
     css`
       outline: none;
       padding: ${(props) =>
@@ -108,7 +108,7 @@ export const Label = styled.label<LabelProps>`
   line-height: ${(props) => getLineHeight('medium', props)};
 
   ${(props) =>
-    props.isActive &&
+    props.$isActive &&
     css`
       top: -24px;
       font-size: ${(props) => getSize('nano', props)};
@@ -138,7 +138,7 @@ export const DownArrowContainer = styled.span<DownArrowProps>`
   transition: 0.2s ease-in-out;
 
   ${(props) =>
-    props.isActive &&
+    props.$isActive &&
     css`
       transform: rotate(180deg);
     `};
@@ -160,7 +160,7 @@ export const SelectOptions = styled.div<SelectOptionsProps>`
   visibility: hidden;
 
   ${(props) =>
-    props.isActive &&
+    props.$isActive &&
     css`
       visibility: visible;
     `};
