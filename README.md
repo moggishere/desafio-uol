@@ -50,7 +50,7 @@ O aplicativo estará disponível em http://localhost:3000.
 1. Certifique-se de estar no diretório do projeto:
 
     ```bash
-    cd desafiot-uol
+    cd desafio-uol
     ```
 
 2. Execute o Storybook com npm:
