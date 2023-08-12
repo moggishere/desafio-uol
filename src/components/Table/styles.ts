@@ -14,6 +14,10 @@ import {
   getRadius
 } from '../../styles/getters';
 
+interface TableWrapperProps {
+  arrIsEmpty: boolean;
+}
+
 export const Table = styled.table`
   border: 1px solid transparent;
   border-collapse: collapse;
@@ -68,13 +72,21 @@ export const TableCell = styled.td`
   padding-right: ${(props) => getSpacing('micro', props)};
   padding-top: ${(props) => getSpacing('xxs', props)};
   padding-bottom: ${(props) => getSpacing('xxxs', props)};
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 
   &:first-child {
     padding-left: ${(props) => getSpacing('micro', props)};
   }
 `;
 
-export const TableWrapper = styled.div`
+export const TableWrapper = styled.div<TableWrapperProps>`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
   border: ${(props) =>
     getStroke('100', props) + getColorNeutral('medium-02', props)};
   padding: ${(props) =>
@@ -88,6 +100,7 @@ export const TableWrapper = styled.div`
   border-radius: ${(props) => getRadius('300', props)};
   font-family: ${(props) => getFontFamily('default', props)};
   width: fit-content;
+  background-color: ${(props) => getColorNeutral('lightest', props)};
 
   @media screen and (max-width: 800px) {
     padding: ${(props) =>
@@ -131,6 +144,7 @@ export const TableWrapper = styled.div`
       gap: ${(props) => getSpacing('nano', props)};
       text-align: left;
       padding: ${(props) => '0 ' + getSpacing('nano', props)};
+      max-width: 15rem;
     }
 
     ${TableCell}::before {
@@ -156,4 +170,27 @@ export const TableWrapper = styled.div`
       border-bottom: 0;
     }
   }
+
+  ${(props) =>
+    props.arrIsEmpty &&
+    css`
+      &::after {
+        content: 'Nenhum usuário encontrado';
+        font-family: ${(props) => getFontFamily('default', props)};
+        font-size: ${(props) => getSize('base', props)};
+        color: ${(props) => getColorNeutral('medium-02', props)};
+        padding: ${(props) =>
+          getSpacing('xs', props) + //top
+          ' ' +
+          getSpacing('xs', props) + //right
+          ' ' +
+          getSpacing('xxxs', props) + //bottom
+          ' ' +
+          getSpacing('xs', props)}; //left
+
+        @media screen and (max-width: 800px) {
+          padding: ${(props) => getSpacing('xxs', props)};
+        }
+      }
+    `};
 `;

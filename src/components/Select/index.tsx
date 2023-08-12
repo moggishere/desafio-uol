@@ -104,7 +104,9 @@ const Select: React.FC<SelectProps> = ({
               handleSelectOption(option);
             }}
           >
-            {option}
+            <S.OptionText key={`option-text-${option}-${index}`}>
+              {option}
+            </S.OptionText>
           </S.Option>
         ))}
       </S.SelectOptions>

@@ -178,3 +178,7 @@ export const Option = styled.span`
     background-color: ${(props) => getColorNeutral('medium-04', props)};
   }
 `;
+
+export const OptionText = styled.span`
+  padding: ${(props) => '0 ' + getSpacing('nano', props)};
+`;
