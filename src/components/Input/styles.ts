@@ -15,13 +15,13 @@ import {
 } from '../../styles/getters';
 
 interface InputContainerProps {
-  isActive: boolean;
-  queryStatus: 'default' | 'info' | 'success' | 'attention' | 'error';
+  $isActive: boolean;
+  $queryStatus: 'default' | 'info' | 'success' | 'attention' | 'error';
   disabled: boolean;
 }
 
 interface LabelProps {
-  isActive: boolean;
+  $isActive: boolean;
 }
 
 interface TextProps {
@@ -40,19 +40,19 @@ export const InputContainer = styled.div<InputContainerProps>`
 
   border: ${(props) => {
     if (
-      props.queryStatus === 'default' ||
-      props.queryStatus === 'info' ||
+      props.$queryStatus === 'default' ||
+      props.$queryStatus === 'info' ||
       props.disabled
     )
       return `${getStroke('100', props)} ${getColorNeutral(
         'medium-04',
         props
       )}`;
-    if (props.queryStatus === 'success')
+    if (props.$queryStatus === 'success')
       return `${getStroke('100', props)} ${getColorAlert('success', props)}`;
-    if (props.queryStatus === 'attention')
+    if (props.$queryStatus === 'attention')
       return `${getStroke('100', props)} ${getColorAlert('attention', props)}`;
-    if (props.queryStatus === 'error')
+    if (props.$queryStatus === 'error')
       return `${getStroke('100', props)} ${getColorAlert('error', props)}`;
     return `${getStroke('100', props)} ${getColorNeutral('medium-04', props)}`; // border default
   }};
@@ -66,16 +66,16 @@ export const InputContainer = styled.div<InputContainerProps>`
   background: ${(props) => getColorNeutral('lightest', props)};
 
   ${(props) =>
-    props.isActive &&
-    props.queryStatus !== 'success' &&
-    props.queryStatus !== 'attention' &&
-    props.queryStatus !== 'error' &&
+    props.$isActive &&
+    props.$queryStatus !== 'success' &&
+    props.$queryStatus !== 'attention' &&
+    props.$queryStatus !== 'error' &&
     css`
       border-color: ${(props) => getColorAction('medium', props)};
     `};
 
   ${(props) =>
-    props.isActive &&
+    props.$isActive &&
     css`
       outline: none;
       padding: ${(props) =>
@@ -119,7 +119,7 @@ export const Label = styled.label<LabelProps>`
   line-height: ${(props) => getLineHeight('medium', props)};
 
   ${(props) =>
-    props.isActive &&
+    props.$isActive &&
     css`
       top: -24px;
       font-size: ${(props) => getSize('nano', props)};

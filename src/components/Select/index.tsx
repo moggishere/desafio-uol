@@ -9,27 +9,7 @@ import React, {
 
 import * as S from './styles';
 
-function useOutsideAlerter(
-  ref: RefObject<HTMLElement>,
-  setState: Dispatch<SetStateAction<boolean>>,
-  ignoreClick: boolean
-) {
-  useEffect(() => {
-    function handleClickOutside(event: MouseEvent) {
-      if (ignoreClick) {
-        return;
-      }
-
-      if (ref.current && !ref.current.contains(event.target as Node)) {
-        setState(false);
-      }
-    }
-    document.addEventListener('mousedown', handleClickOutside);
-    return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
-    };
-  }, [ref]);
-}
+import { useOutsideAlerter } from '../../hooks/useOutsideAlerter';
 
 export type SelectProps = {
   queryType?: string;
@@ -46,10 +26,10 @@ const Select: React.FC<SelectProps> = ({
   disabled = false,
   options = ['default option']
 }) => {
-  const [isFocused, setIsFocused] = useState(true);
-  const [isSelecting, setIsSelecting] = useState(false);
+  const [isFocused, setIsFocused] = useState(false);
+  const [firstLoad, setFirstLoad] = useState(true);
   const wrapperRef = useRef(null);
-  useOutsideAlerter(wrapperRef, setIsFocused, isSelecting);
+  useOutsideAlerter(wrapperRef, setIsFocused);
 
   const handleFocus = () => {
     setIsFocused(true);
@@ -59,17 +39,15 @@ const Select: React.FC<SelectProps> = ({
     setIsFocused(true);
   };
 
-  const handleBlur = () => {
-    setIsFocused(false);
-  };
-
   const handleSelectOption = (value: string) => {
-    setIsSelecting(true);
     setQueryType && setQueryType(value);
-    setIsSelecting(false);
   };
 
   useEffect(() => {
+    if (firstLoad) {
+      setFirstLoad(false)
+      return
+    }
     setIsFocused(!isFocused);
   }, [queryType]);
 
@@ -78,12 +56,12 @@ const Select: React.FC<SelectProps> = ({
       disabled={disabled}
       onClick={() => handleClick()}
       ref={wrapperRef}
-      isActive={isFocused || queryType?.length ? true : false}
+      $isActive={isFocused || queryType?.length ? true : false}
     >
       <S.Label
         className="label"
         htmlFor="finput"
-        isActive={isFocused || queryType?.length ? true : false}
+        $isActive={isFocused || queryType?.length ? true : false}
       >
         <S.Text disabled={disabled}>{label ? label : 'Label do select'}</S.Text>
       </S.Label>
@@ -91,12 +69,11 @@ const Select: React.FC<SelectProps> = ({
         tabIndex={4}
         aria-labelledby="label-finput"
         onFocus={handleFocus}
-        // onBlur={handleBlur}
       >
         {queryType ?? ''}
-        <S.DownArrowContainer isActive={isFocused}>{'▼'}</S.DownArrowContainer>
+        <S.DownArrowContainer $isActive={isFocused}>{'▼'}</S.DownArrowContainer>
       </S.SelectElement>
-      <S.SelectOptions isActive={isFocused}>
+      <S.SelectOptions $isActive={isFocused}>
         {options.map((option, index) => (
           <S.Option
             key={`option-${option}-${index}`}

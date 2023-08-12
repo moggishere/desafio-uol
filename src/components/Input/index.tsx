@@ -1,17 +1,21 @@
-import React, { useState, useEffect, Dispatch, SetStateAction } from 'react';
+import React, {
+  useState,
+  useEffect,
+  Dispatch,
+  SetStateAction,
+  InputHTMLAttributes
+} from 'react';
 
 import * as S from './styles';
 
-export type InputProps = {
+export interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   setUserSearchQuery?: Dispatch<SetStateAction<any>>;
-  //   userSearchQuery: string;
   queryStatus?: 'default' | 'info' | 'success' | 'attention' | 'error';
   label?: string;
   disabled?: boolean;
-};
+}
 
 const Input: React.FC<InputProps> = ({
-  //   userSearchQuery,
   setUserSearchQuery,
   queryStatus = 'default',
   label,
@@ -38,19 +42,21 @@ const Input: React.FC<InputProps> = ({
 
   return (
     <S.InputContainer
-      isActive={isFocused || inputValue.length > 0}
-      queryStatus={queryStatus}
+      $isActive={isFocused || inputValue.length > 0}
+      $queryStatus={queryStatus}
       disabled={disabled}
     >
       <S.Label
         className="label"
         htmlFor="finput"
-        isActive={isFocused || inputValue.length > 0}
+        $isActive={isFocused || inputValue.length > 0}
       >
         <S.Text disabled={disabled}>{label ? label : 'Label do input'}</S.Text>
       </S.Label>
       <S.InputElement
+        data-testid="input-element"
         type="text"
+        id="finput"
         name="finput"
         value={inputValue}
         onChange={(e) => {

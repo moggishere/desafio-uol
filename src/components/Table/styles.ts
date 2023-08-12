@@ -15,7 +15,7 @@ import {
 } from '../../styles/getters';
 
 interface TableWrapperProps {
-  arrIsEmpty: boolean;
+  $arrIsEmpty: boolean;
 }
 
 export const Table = styled.table`
@@ -172,7 +172,7 @@ export const TableWrapper = styled.div<TableWrapperProps>`
   }
 
   ${(props) =>
-    props.arrIsEmpty &&
+    props.$arrIsEmpty &&
     css`
       &::after {
         content: 'Nenhum usuário encontrado';
