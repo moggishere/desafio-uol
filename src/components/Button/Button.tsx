@@ -7,6 +7,7 @@ export type ButtonProps = {
   size?: 'small' | 'medium' | 'large';
   disabled?: boolean;
   handleClick?: (e: any) => void;
+  type?: 'submit' | 'reset' | 'button';
 };
 
 const Button: React.FC<ButtonProps> = ({
@@ -14,12 +15,9 @@ const Button: React.FC<ButtonProps> = ({
   buttonType = 'primary',
   size = 'medium',
   disabled = false,
-  handleClick
+  handleClick,
+  type = 'button'
 }) => {
-  //type = 'primary' (default) | 'secondary'
-  //size = 'small' | 'medium' (default) | 'large'
-  //disabled = boolean
-
   return (
     <S.ButtonBody
       onClick={(e) => handleClick && handleClick(e)}
@@ -28,6 +26,7 @@ const Button: React.FC<ButtonProps> = ({
       buttonSize={size}
       name="button"
       aria-label="user-button"
+      type={type}
     >
       {children ? children : 'No label found'}
     </S.ButtonBody>
