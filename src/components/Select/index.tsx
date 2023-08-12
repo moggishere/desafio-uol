@@ -9,22 +9,7 @@ import React, {
 
 import * as S from './styles';
 
-function useOutsideAlerter(
-  ref: RefObject<HTMLElement>,
-  setState: Dispatch<SetStateAction<boolean>>,
-) {
-  useEffect(() => {
-    function handleClickOutside(event: MouseEvent) {
-      if (ref.current && !ref.current.contains(event.target as Node)) {
-        setState(false);
-      }
-    }
-    document.addEventListener('mousedown', handleClickOutside);
-    return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
-    };
-  }, [ref]);
-}
+import { useOutsideAlerter } from '../../hooks/useOutsideAlerter';
 
 export type SelectProps = {
   queryType?: string;

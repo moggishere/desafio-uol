@@ -6,7 +6,7 @@ const Intro = () => {
   return (
     <>
       <S.ExampleDiv>
-        <S.WelcomeMessage>{'Seja bem-vindo'}</S.WelcomeMessage>
+        <S.WelcomeMessage>{'Teste front-end'}</S.WelcomeMessage>
         <a href="/client-list">
           <Button>Carregar lista de clientes</Button>
         </a>

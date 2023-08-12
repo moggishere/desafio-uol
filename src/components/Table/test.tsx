@@ -23,13 +23,11 @@ describe('Table Component', () => {
       <Table columns={columns} customers={mockCustomers} />
     );
 
-    // Check if table header columns are rendered
     for (const column of columns) {
       const headerColumn = screen.getByText(column);
       expect(headerColumn).toBeInTheDocument();
     }
 
-    // Check if customer data is rendered
     for (const customer of mockCustomers) {
       const nameCell = screen.getByText(customer.name);
       const emailCell = screen.getByText(customer.email);
