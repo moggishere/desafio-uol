@@ -72,8 +72,29 @@ O aplicativo estará disponível em http://localhost:3000.
     ``` 
 O Storybook estará disponível em http://localhost:6006.
 
+## Como Rodar os Testes Unitários
+1. Para rodar os testes utilizando Jest e React Testing Library, certifique-se de estar no diretório do projeto:
+
+    ```bash
+    cd desafio-uol
+    ```
+
+2. Execute os testes com npm:
+
+    ```bash
+    npm test
+    ```
+    
+    Ou, com Yarn:
+
+    ```bash
+    yarn test
+    ``` 
+
 ## Scripts Disponíveis
-* npm run dev ou yarn dev: Inicia o servidor de desenvolvimento do Next.js.
-* npm run build ou yarn build: Compila o aplicativo Next.js para produção.
-* npm start ou yarn start: Inicia o aplicativo compilado.
-* npm run storybook ou yarn storybook: Inicia o Storybook.
+* **npm run dev** ou **yarn dev**: Inicia o servidor de desenvolvimento do Next.js.
+* **npm run build** ou **yarn build**: Compila o aplicativo Next.js para produção.
+* **npm start** ou **yarn start**: Inicia o aplicativo compilado.
+* **npm run storybook** ou **yarn storybook**: Inicia o Storybook.
+* **npm run storybook** ou **yarn storybook**: Inicia o Storybook.
+* **npm test** ou **yarn test**: Executa os testes utilizando Jest e React Testing Library.

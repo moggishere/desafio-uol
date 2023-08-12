@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, TableHTMLAttributes } from 'react';
 
 import { filterObjectsBySubstring } from '../../utils/helpers';
 
@@ -14,7 +14,7 @@ interface Customer {
   status: string;
 }
 
-export type TableProps = {
+export interface TableProps extends TableHTMLAttributes<HTMLTableElement> {
   query?: string;
   queryType?: string;
   columns?: Array<string>;
