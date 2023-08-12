@@ -1,7 +1,7 @@
-import React from 'react';
+import React, {ButtonHTMLAttributes} from 'react';
 import * as S from './styles';
 
-export type ButtonProps = {
+export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   children?: React.ReactNode;
   buttonType?: 'primary' | 'secondary';
   size?: 'small' | 'medium' | 'large';
@@ -16,16 +16,18 @@ const Button: React.FC<ButtonProps> = ({
   size = 'medium',
   disabled = false,
   handleClick,
-  type = 'button'
+  type = 'button',
+  ...props
 }) => {
   return (
     <S.ButtonBody
+      {...props}
       onClick={(e) => handleClick && handleClick(e)}
       disabled={disabled}
       buttonType={buttonType}
       buttonSize={size}
       name="button"
-      aria-label="user-button"
+      aria-label="button"
       type={type}
     >
       {children ? children : 'No label found'}

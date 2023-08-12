@@ -2,6 +2,12 @@
 
 Aplicação desenvolvida durante o processo seletivo para desenvolvedor front-end do UOL. Sua funcionalidade consiste em listar clientes resultantes de uma chamada de API e a filtragem deles de acordo com parêmetros inseridos pelo usuário.
 
+## Links online
+
+[Site do projeto](https://desafio-uol.vercel.app/)
+
+[Site do Storybook do projeto](https://moggishere.github.io/desafio-uol-storybook/)
+
 ## Pré-requisitos
 
 - Node.js (versão 14.6.0 ou superior)
