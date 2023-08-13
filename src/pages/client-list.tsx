@@ -5,6 +5,7 @@ import * as S from '../styles/pagesStyles';
 import Input from '../components/Input';
 import Table from '../components/Table/Table';
 import Select from '../components/Select';
+
 interface Customer {
   id: string;
   name: string;
@@ -13,34 +14,42 @@ interface Customer {
   status: string;
 }
 
-const ClientList = ({ jsonData }: { jsonData: any }) => {
-  const tableColumns = ['id', 'name', 'email', 'phone', 'status'];
+interface ClientListProps {
+  jsonData: {
+    customers: Customer[];
+  };
+}
+
+const ClientList: React.FC<ClientListProps> = ({ jsonData }) => {
   const [userSearchQuery, setUserSearchQuery] = useState('');
-  const [queryType, setQueryType] = useState(tableColumns[2]);
+  const [queryType, setQueryType] = useState('email');
+  const [result, setResult] = useState('info');
 
   return (
     <S.PageContainer>
       <S.ClientListContainer>
-        <S.InputFieldsContainer>
-          <Input
-            label={'filtrar clientes'}
-            setUserSearchQuery={setUserSearchQuery}
-          />
-          <Select
-            queryType={queryType}
-            label={'campo de filtro'}
-            setQueryType={setQueryType}
-            options={tableColumns}
-          />
-        </S.InputFieldsContainer>
-
         {jsonData ? (
           <>
+            <S.InputFieldsContainer>
+              <Input
+                label={'filtrar clientes'}
+                inputValue={userSearchQuery}
+                setInputValue={setUserSearchQuery}
+                queryStatus={result}
+              />
+              <Select
+                queryType={queryType}
+                label={'campo de filtro'}
+                setQueryType={setQueryType}
+                options={Object.keys(jsonData.customers[0])}
+              />
+            </S.InputFieldsContainer>
             <Table
               query={userSearchQuery}
               queryType={queryType}
-              columns={tableColumns}
+              columns={Object.keys(jsonData.customers[0])}
               customers={jsonData.customers}
+              setResult={setResult}
             />
           </>
         ) : (
@@ -57,7 +66,7 @@ export async function getServerSideProps() {
     const response = await fetch(endpointUrl);
 
     if (!response.ok) {
-      throw new Error(`Request failed with status: ${response.status}`);
+      throw new Error(`Pedido falhou com o status de erro: ${response.status}`);
     }
 
     const jsonData = await response.json();
@@ -68,7 +77,7 @@ export async function getServerSideProps() {
       }
     };
   } catch (error) {
-    console.error('Error in getServerSideProps:', error);
+    console.error('Erro em getServerSideProps:', error);
     return {
       props: {
         customers: []
