@@ -9,6 +9,11 @@ export default {
   component: Table,
   parameters: {
     layout: 'centered'
+  },
+  argTypes: {
+    queryType: { control: false },
+    columns: { control: false },
+    customers: { control: false }
   }
 } as Meta;
 
@@ -25,4 +30,19 @@ export const Empty = Template.bind({});
 Empty.args = {
   query: '',
   columns: ['id', 'name', 'email', 'phone', 'status']
+};
+
+export const WithCaption = Template.bind({});
+WithCaption.args = {
+  query: '',
+  caption: 'lista de clientes',
+  columns: ['id', 'name', 'email', 'phone', 'status'],
+  customers: mockData.customers
+};
+
+export const WithCustomError = Template.bind({});
+WithCustomError.args = {
+  query: '',
+  columns: ['name', 'occupation', 'address'],
+  errorMessage: 'Custom error message'
 };
