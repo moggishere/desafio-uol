@@ -1,6 +1,12 @@
 # Desafio UOL
 
-Aplicação desenvolvida durante o processo seletivo para desenvolvedor front-end do UOL. Sua funcionalidade consiste em listar clientes resultantes de uma chamada de API e a filtragem deles de acordo com parêmetros inseridos pelo usuário.
+![Next JS](https://img.shields.io/badge/Next-black?style=for-the-badge&logo=next.js&logoColor=white)
+![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)
+![Testing-Library](https://img.shields.io/badge/-TestingLibrary-%23E33332?style=for-the-badge&logo=testing-library&logoColor=white)
+![Jest](https://img.shields.io/badge/-jest-%23C21325?style=for-the-badge&logo=jest&logoColor=white)
+![Storybook](https://img.shields.io/badge/-Storybook-FF4785?style=for-the-badge&logo=storybook&logoColor=white)
+
+Aplicação desenvolvida durante o processo seletivo para desenvolvedor front-end do UOL. Sua funcionalidade consiste em listar clientes resultantes de uma chamada de API e a filtragem deles de acordo com parâmetros inseridos pelo usuário.
 
 ## Links online
 
