@@ -42,15 +42,15 @@ Aplicação desenvolvida durante o processo seletivo para desenvolvedor front-en
 
 4.  Execute o servidor de desenvolvimento do Next.js com npm:
 
-        ```bash
-        npm run dev
-        ```
+    ```bash
+    npm run dev
+    ```
 
-        Ou, com Yarn:
-
-        ```bash
-        yarn dev
-        ```
+    Ou, com Yarn:
+   
+    ```bash
+    yarn dev
+    ```
 
     O aplicativo estará disponível em http://localhost:3000.
 
@@ -66,15 +66,15 @@ Nota: Caso queira executar **npm start** ou **yarn start** é necessário realiz
 
 2.  Execute o Storybook com npm:
 
-        ```bash
-        npm run storybook
-        ```
+    ```bash
+    npm run storybook
+    ```
 
-        Ou, com Yarn:
+    Ou, com Yarn:
 
-        ```bash
-        yarn storybook
-        ```
+    ```bash
+    yarn storybook
+    ```
 
     O Storybook estará disponível em http://localhost:6006.
 
