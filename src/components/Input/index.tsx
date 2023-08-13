@@ -70,4 +70,13 @@ const Input: React.FC<InputProps> = ({
   );
 };
 
-export default Input;
+function arePropsEqual(prevProps: InputProps, nextProps: InputProps) {
+  return (
+    prevProps.inputValue === nextProps.inputValue &&
+    prevProps.queryStatus === nextProps.queryStatus &&
+    prevProps.label === nextProps.label &&
+    prevProps.disabled === nextProps.disabled
+  );
+}
+
+export default React.memo(Input, arePropsEqual);

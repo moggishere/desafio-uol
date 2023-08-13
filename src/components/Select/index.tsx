@@ -45,8 +45,8 @@ const Select: React.FC<SelectProps> = ({
 
   useEffect(() => {
     if (firstLoad) {
-      setFirstLoad(false)
-      return
+      setFirstLoad(false);
+      return;
     }
     setIsFocused(!isFocused);
   }, [queryType]);
@@ -91,4 +91,13 @@ const Select: React.FC<SelectProps> = ({
   );
 };
 
-export default Select;
+function arePropsEqual(prevProps: SelectProps, nextProps: SelectProps) {
+  return (
+    prevProps.queryType === nextProps.queryType &&
+    prevProps.label === nextProps.label &&
+    prevProps.options === nextProps.options &&
+    prevProps.disabled === nextProps.disabled
+  );
+}
+
+export default React.memo(Select, arePropsEqual);

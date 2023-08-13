@@ -1,4 +1,4 @@
-import React, {ButtonHTMLAttributes} from 'react';
+import React, { ButtonHTMLAttributes } from 'react';
 import * as S from './styles';
 
 export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
@@ -8,7 +8,7 @@ export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   disabled?: boolean;
   handleClick?: (e: any) => void;
   type?: 'submit' | 'reset' | 'button';
-};
+}
 
 const Button: React.FC<ButtonProps> = ({
   children = 'label do botão',
@@ -35,4 +35,13 @@ const Button: React.FC<ButtonProps> = ({
   );
 };
 
-export default Button;
+function arePropsEqual(prevProps: ButtonProps, nextProps: ButtonProps) {
+  return (
+    prevProps.children === nextProps.children &&
+    prevProps.size === nextProps.size &&
+    prevProps.buttonType === nextProps.buttonType &&
+    prevProps.disabled === nextProps.disabled
+  );
+}
+
+export default React.memo(Button, arePropsEqual);
