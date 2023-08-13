@@ -6,7 +6,10 @@ import mockData from '../components/Table/mockData.json';
 
 export default {
   title: 'Component/Table',
-  component: Table
+  component: Table,
+  parameters: {
+    layout: 'centered'
+  }
 } as Meta;
 
 const Template: StoryFn<TableProps> = (args) => <Table {...args} />;

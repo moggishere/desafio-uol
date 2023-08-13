@@ -4,7 +4,10 @@ import Select, { SelectProps } from '../components/Select';
 
 export default {
   title: 'Component/Select',
-  component: Select
+  component: Select,
+  parameters: {
+    layout: 'centered'
+  }
   //   argTypes: { handleClick: { action: 'handleClick' } }
 } as Meta;
 

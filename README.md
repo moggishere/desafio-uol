@@ -16,85 +16,93 @@ Aplicação desenvolvida durante o processo seletivo para desenvolvedor front-en
 
 ## Como Rodar Localmente
 
-1. Clone este repositório (ou faça o download do ZIP):
+1.  Clone este repositório (ou faça o download do ZIP):
 
-   ```bash
-   git clone https://github.com/moggishere/desafio-uol.git
-   ```
+    ```bash
+    git clone https://github.com/moggishere/desafio-uol.git
+    ```
 
-2. Acesse o diretório do projeto:
+2.  Acesse o diretório do projeto:
 
     ```bash
     cd desafio-uol
     ```
 
-3. Instale as dependências com npm:
+3.  Instale as dependências com npm:
 
     ```bash
     npm install
     ```
+
     Ou, instale com Yarn:
 
     ```bash
     yarn
     ```
 
-4. Execute o servidor de desenvolvimento do Next.js com npm:
+4.  Execute o servidor de desenvolvimento do Next.js com npm:
 
-    ```bash
-    npm run dev
-    ```
+        ```bash
+        npm run dev
+        ```
 
-    Ou, com Yarn:
+        Ou, com Yarn:
 
-    ```bash
-    yarn dev
-    ```
-O aplicativo estará disponível em http://localhost:3000.
+        ```bash
+        yarn dev
+        ```
+
+    O aplicativo estará disponível em http://localhost:3000.
+
+Nota: Caso queira executar **npm start** ou **yarn start** é necessário realizar **npm run build** ou **yarn build** primeiro.
 
 ## Como Executar o Storybook
-1. Certifique-se de estar no diretório do projeto:
+
+1.  Certifique-se de estar no diretório do projeto:
 
     ```bash
     cd desafio-uol
     ```
 
-2. Execute o Storybook com npm:
+2.  Execute o Storybook com npm:
 
-    ```bash
-    npm run storybook
-    ```
-    
-    Ou, com Yarn:
+        ```bash
+        npm run storybook
+        ```
 
-    ```bash
-    yarn storybook
-    ``` 
-O Storybook estará disponível em http://localhost:6006.
+        Ou, com Yarn:
+
+        ```bash
+        yarn storybook
+        ```
+
+    O Storybook estará disponível em http://localhost:6006.
 
 ## Como Rodar os Testes Unitários
+
 1. Para rodar os testes utilizando Jest e React Testing Library, certifique-se de estar no diretório do projeto:
 
-    ```bash
-    cd desafio-uol
-    ```
+   ```bash
+   cd desafio-uol
+   ```
 
 2. Execute os testes com npm:
 
-    ```bash
-    npm test
-    ```
-    
-    Ou, com Yarn:
+   ```bash
+   npm test
+   ```
 
-    ```bash
-    yarn test
-    ``` 
+   Ou, com Yarn:
+
+   ```bash
+   yarn test
+   ```
 
 ## Scripts Disponíveis
-* **npm run dev** ou **yarn dev**: Inicia o servidor de desenvolvimento do Next.js.
-* **npm run build** ou **yarn build**: Compila o aplicativo Next.js para produção.
-* **npm start** ou **yarn start**: Inicia o aplicativo compilado.
-* **npm run storybook** ou **yarn storybook**: Inicia o Storybook.
-* **npm run storybook** ou **yarn storybook**: Inicia o Storybook.
-* **npm test** ou **yarn test**: Executa os testes utilizando Jest e React Testing Library.
+
+- **npm run dev** ou **yarn dev**: Inicia o servidor de desenvolvimento do Next.js.
+- **npm run build** ou **yarn build**: Compila o aplicativo Next.js para produção.
+- **npm start** ou **yarn start**: Inicia o aplicativo compilado.
+- **npm run storybook** ou **yarn storybook**: Inicia o Storybook.
+- **npm run storybook** ou **yarn storybook**: Inicia o Storybook.
+- **npm test** ou **yarn test**: Executa os testes utilizando Jest e React Testing Library.

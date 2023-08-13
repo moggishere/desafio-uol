@@ -45,6 +45,7 @@ const Input: React.FC<InputProps> = ({
       $isActive={isFocused || inputValue.length > 0}
       $queryStatus={queryStatus}
       disabled={disabled}
+      $inputValue={inputValue}
     >
       <S.Label
         className="label"
