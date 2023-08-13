@@ -18,6 +18,7 @@ interface InputContainerProps {
   $isActive: boolean;
   $queryStatus: 'default' | 'info' | 'success' | 'attention' | 'error';
   disabled: boolean;
+  $inputValue: string;
 }
 
 interface LabelProps {
@@ -42,6 +43,7 @@ export const InputContainer = styled.div<InputContainerProps>`
     if (
       props.$queryStatus === 'default' ||
       props.$queryStatus === 'info' ||
+      !props.$inputValue.length ||
       props.disabled
     )
       return `${getStroke('100', props)} ${getColorNeutral(
