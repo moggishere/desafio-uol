@@ -1,4 +1,10 @@
-import React, { useState, useEffect, TableHTMLAttributes } from 'react';
+import React, {
+  useState,
+  useEffect,
+  TableHTMLAttributes,
+  Dispatch,
+  SetStateAction
+} from 'react';
 
 import { filterObjectsBySubstring } from '../../utils/helpers';
 
@@ -20,7 +26,9 @@ export interface TableProps extends TableHTMLAttributes<HTMLTableElement> {
   columns?: Array<string>;
   customers?: Customer[];
   caption?: string;
-};
+  errorMessage?: string;
+  setResult?: Dispatch<SetStateAction<string>>;
+}
 
 const Table: React.FC<TableProps> = React.memo(
   ({
@@ -28,18 +36,33 @@ const Table: React.FC<TableProps> = React.memo(
     queryType = 'email',
     columns = ['No columns'],
     customers = [],
-    caption = ''
+    caption = '',
+    errorMessage = 'Nenhum usuário encontrado.',
+    setResult,
+    ...props
   }) => {
     const [queryResult, setQueryResult] = useState([...customers]);
     useEffect(() => {
       let filteredArr = filterObjectsBySubstring(customers, queryType, query);
       setQueryResult(filteredArr);
+
+      if (filteredArr.length === 1) {
+        setResult && setResult('success');
+      } else if (filteredArr.length === 0) {
+        setResult && setResult('error');
+      } else {
+        setResult && setResult('default');
+      }
+
       return;
     }, [query, queryType]);
 
     return (
-      <S.TableWrapper $arrIsEmpty={!queryResult.length ? true : false}>
-        <S.Table>
+      <S.TableWrapper
+        $arrIsEmpty={!queryResult.length ? true : false}
+        data-message={errorMessage}
+      >
+        <S.Table {...props}>
           {caption ? <S.Caption>{caption ? caption : ''}</S.Caption> : <></>}
           <thead>
             <S.TableRow>

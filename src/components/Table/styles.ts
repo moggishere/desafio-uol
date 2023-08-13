@@ -31,7 +31,12 @@ export const Table = styled.table`
 
 export const Caption = styled.caption`
   font-size: ${(props) => getSize('sm', props)};
-  margin: 0.5em 0 0.75em;
+  margin: ${(props) =>
+    getSpacing('xs', props) + ' 0 ' + getSpacing('sm', props)};
+
+  &::first-letter {
+    text-transform: capitalize;
+  }
 `;
 
 export const TableRow = styled.tr`
@@ -175,7 +180,7 @@ export const TableWrapper = styled.div<TableWrapperProps>`
     props.$arrIsEmpty &&
     css`
       &::after {
-        content: 'Nenhum usuário encontrado';
+        content: attr(data-message);
         font-family: ${(props) => getFontFamily('default', props)};
         font-size: ${(props) => getSize('base', props)};
         color: ${(props) => getColorNeutral('medium-02', props)};
