@@ -4,9 +4,9 @@ Aplicação desenvolvida durante o processo seletivo para desenvolvedor front-en
 
 ## Links online
 
-[Site do projeto](https://desafio-uol.vercel.app/)
+[Site rodando deploy do projeto](https://desafio-uol.vercel.app/)
 
-[Site do Storybook do projeto](https://moggishere.github.io/desafio-uol-storybook/)
+[Site rodando deploy do Storybook do projeto](https://moggishere.github.io/desafio-uol-storybook/)
 
 ## Pré-requisitos
 
@@ -100,7 +100,9 @@ Nota: Caso queira executar **npm start** ou **yarn start** é necessário realiz
 ## Resultado
 
 ### Tabela
-  ![table_default](https://github.com/moggishere/desafio-uol/assets/92119192/8eb1131c-294d-4fd4-96ec-d9444cc1c7e2)
+
+  ![table_desktop_default](https://github.com/moggishere/desafio-uol/assets/92119192/fd0a50db-a975-4c26-8a12-8ee07e749e9f)
+  ![table_mobile_default](https://github.com/moggishere/desafio-uol/assets/92119192/431521d0-9dad-4316-a13e-c6b99a0d5f60)
 
 ### Botões
 
@@ -113,15 +115,15 @@ Nota: Caso queira executar **npm start** ou **yarn start** é necessário realiz
 
 ### Input
 
-  ![input_default](https://github.com/moggishere/desafio-uol/assets/92119192/2fe0dd50-ca45-47e0-ae0f-66fc238538df)
-  ![input_disabled](https://github.com/moggishere/desafio-uol/assets/92119192/7a2d4fdb-0941-4c50-a744-8019805296b8)
-  ![input_success](https://github.com/moggishere/desafio-uol/assets/92119192/e64f54e1-91c2-400d-92dd-b3e6a937eea8)
-  ![input_attention](https://github.com/moggishere/desafio-uol/assets/92119192/7f7e920c-c292-4004-8667-a9bc7dabe165)
-  ![input_error](https://github.com/moggishere/desafio-uol/assets/92119192/2e7f9e9a-0634-4a55-9f23-7d526bf17161)
+  ![input_default](https://github.com/moggishere/desafio-uol/assets/92119192/0698e436-7b57-4fdf-ba91-f891ae5454b5)
+  ![input_disabled](https://github.com/moggishere/desafio-uol/assets/92119192/a2e36fb2-21c3-499e-a682-37fe6c607917)
+  ![input_success](https://github.com/moggishere/desafio-uol/assets/92119192/e497fe12-07fb-42e6-aedf-6cc3084c8abb)
+  ![input_attention](https://github.com/moggishere/desafio-uol/assets/92119192/edcb6bf1-8ea6-443f-a75f-2d3beba7dcf5)
+  ![input_error](https://github.com/moggishere/desafio-uol/assets/92119192/50271b8a-cd45-4773-bc60-bdb538e7a094)
 
 ### Select
 
-  ![select_default](https://github.com/moggishere/desafio-uol/assets/92119192/f51a3d3e-004a-437b-b653-5a2fb2e05aff)
+  ![select_default](https://github.com/moggishere/desafio-uol/assets/92119192/957ac262-5ca9-4702-b9ee-fedb040d37b3)
 
 ## Scripts Disponíveis
 
