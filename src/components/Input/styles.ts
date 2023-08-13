@@ -16,7 +16,7 @@ import {
 
 interface InputContainerProps {
   $isActive: boolean;
-  $queryStatus: 'default' | 'info' | 'success' | 'attention' | 'error';
+  $queryStatus: 'default' | 'info' | 'success' | 'attention' | 'error' | string;
   disabled: boolean;
   $inputValue: string;
 }
@@ -83,6 +83,12 @@ export const InputContainer = styled.div<InputContainerProps>`
       padding: ${(props) =>
         `${getSpacing('nano', props)} ${getSpacing('xxs', props)}`};
     `};
+
+  ${(props) =>
+    props.disabled &&
+    css`
+      cursor: not-allowed;
+    `};
 `;
 
 export const InputElement = styled.input`
@@ -96,13 +102,16 @@ export const InputElement = styled.input`
   color: ${(props) => getColorNeutral('dark', props)};
   line-height: ${(props) => getLineHeight('medium', props)};
   font-weight: ${(props) => getWeight('regular', props)};
+  transition: 0.1s cubic-bezier(0.5, 0.5, 0, 1);
 
   &:focus {
     outline: none;
   }
 
   &:disabled {
+    color: ${(props) => getColorNeutral('medium-04', props)};
     background: transparent;
+    cursor: not-allowed;
   }
 `;
 

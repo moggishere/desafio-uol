@@ -1,6 +1,5 @@
 import React, {
   useState,
-  useEffect,
   Dispatch,
   SetStateAction,
   InputHTMLAttributes
@@ -9,28 +8,26 @@ import React, {
 import * as S from './styles';
 
 export interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
-  setUserSearchQuery?: Dispatch<SetStateAction<any>>;
-  queryStatus?: 'default' | 'info' | 'success' | 'attention' | 'error';
+  inputValue?: string;
+  setInputValue?: Dispatch<SetStateAction<any>>;
+  queryStatus?: 'default' | 'info' | 'success' | 'attention' | 'error' | string;
   label?: string;
   disabled?: boolean;
 }
 
 const Input: React.FC<InputProps> = ({
-  setUserSearchQuery,
+  setInputValue,
+  inputValue = '',
   queryStatus = 'default',
   label,
-  disabled = false
+  disabled = false,
+  ...props
 }) => {
-  const [inputValue, setInputValue] = useState('');
   const [isFocused, setIsFocused] = useState(false);
 
   const handleInputChange = (event: any) => {
-    setInputValue(event.target.value);
+    setInputValue && setInputValue(event.target.value);
   };
-
-  useEffect(() => {
-    setUserSearchQuery?.(inputValue);
-  }, [inputValue]);
 
   const handleFocus = () => {
     setIsFocused(true);
@@ -55,6 +52,7 @@ const Input: React.FC<InputProps> = ({
         <S.Text disabled={disabled}>{label ? label : 'Label do input'}</S.Text>
       </S.Label>
       <S.InputElement
+        {...props}
         data-testid="input-element"
         type="text"
         id="finput"

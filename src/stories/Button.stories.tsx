@@ -4,7 +4,10 @@ import Button, { ButtonProps } from '../components/Button/Button';
 export default {
   title: 'Component/Button',
   component: Button,
-  argTypes: { handleClick: { action: 'handleClick' } },
+  argTypes: {
+    handleClick: { action: 'handleClick' },
+    type: { control: false }
+  },
   parameters: {
     layout: 'centered'
   }

@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, fireEvent } from '@testing-library/react';
+import { render, fireEvent, waitFor } from '@testing-library/react';
 import Input from '.';
 
 describe('Input Component', () => {
@@ -8,15 +8,6 @@ describe('Input Component', () => {
     const inputElement = container.querySelector('#finput') as HTMLInputElement;
 
     expect(inputElement).toBeInTheDocument();
-  });
-
-  test('updates inputValue on input change', () => {
-    const { getByRole } = render(<Input />);
-    const inputElement = getByRole('textbox') as HTMLInputElement;
-
-    fireEvent.change(inputElement, { target: { value: 'Bom dia!' } });
-
-    expect(inputElement.value).toBe('Bom dia!');
   });
 
   test('handles onBlur and onFocus events', () => {
