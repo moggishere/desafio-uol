@@ -13,7 +13,8 @@ export default {
   argTypes: {
     queryType: { control: false },
     columns: { control: false },
-    customers: { control: false }
+    customers: { control: false },
+    setResult: { control: false }
   }
 } as Meta;
 
