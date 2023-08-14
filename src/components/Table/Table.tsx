@@ -27,7 +27,9 @@ export interface TableProps extends TableHTMLAttributes<HTMLTableElement> {
   customers?: Customer[];
   caption?: string;
   errorMessage?: string;
-  setResult?: Dispatch<SetStateAction<string>>;
+  setResult?: Dispatch<
+    SetStateAction<'default' | 'info' | 'success' | 'attention' | 'error'>
+  >;
 }
 
 const Table: React.FC<TableProps> = ({

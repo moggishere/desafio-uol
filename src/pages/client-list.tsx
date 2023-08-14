@@ -20,10 +20,12 @@ interface ClientListProps {
   };
 }
 
+type ResultProps = 'default' | 'info' | 'success' | 'attention' | 'error';
+
 const ClientList: React.FC<ClientListProps> = ({ jsonData }) => {
   const [userSearchQuery, setUserSearchQuery] = useState('');
   const [queryType, setQueryType] = useState('email');
-  const [result, setResult] = useState('info');
+  const [result, setResult] = useState<ResultProps>('info');
 
   return (
     <S.PageContainer>

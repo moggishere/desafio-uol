@@ -10,7 +10,7 @@ import * as S from './styles';
 export interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   inputValue?: string;
   setInputValue?: Dispatch<SetStateAction<any>>;
-  queryStatus?: 'default' | 'info' | 'success' | 'attention' | 'error' | string;
+  queryStatus?: 'default' | 'info' | 'success' | 'attention' | 'error';
   label?: string;
   disabled?: boolean;
 }
